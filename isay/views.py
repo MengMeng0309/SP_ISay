@@ -52,3 +52,9 @@ class AppointmentTemplateView(TemplateView):
 class ManageAppointmentTemplateView(TemplateView):
     template_name = "manage-appointments.html"
     login_required = True
+
+class LoginTemplateView(TemplateView):
+    template_name = "login.html"
+
+class SignupTemplateView(TemplateView):
+    template_name = "signup.html"

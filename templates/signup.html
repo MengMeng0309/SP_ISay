@@ -1,0 +1,286 @@
+{% extends 'base.html' %}
+{% block style %}
+
+.card {
+    padding: 30px 40px;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    border: none !important;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+}
+
+.green-text {
+    color: rgb(10, 147, 150)
+}
+
+.form-control-label {
+    margin-bottom: 0
+}
+
+input,
+textarea,
+button {
+    padding: 8px 15px;
+    border-radius: 5px !important;
+    margin: 5px 0px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-size: 18px !important;
+    font-weight: 300
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #00BCD4;
+    outline-width: 0;
+    font-weight: 400
+}
+
+.btn-block {
+    text-transform: uppercase;
+    font-size: 15px !important;
+    font-weight: 400;
+    height: 43px;
+    cursor: pointer
+}
+
+.btn-block:hover {
+    color: #fff !important
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+{% endblock style %}
+
+{% block content %}
+
+{% if messages %}
+<div class="card notification-card notification-invitation">
+    <div class="card-body">
+        {% for message in messages %}
+        <div class="card-title">{{message}} </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endif %}
+
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-6 col-lg-7 col-md-8 col-9 text-center">
+            <h2>
+                Create your iSay account
+            </h2>
+            <h3 class="green-text">But first, help us know you better.</h3>
+            <div class="card">
+
+                <form class="form-card" method="POST" action= "{% url 'login' %}">
+                    {% csrf_token %}   
+                    <h5>What type of service are you looking for?</h5>
+                        <div class="row justify-content-center">
+                            <label for="type"></label>
+                            <select name="type" id="service">
+                                <option value="myself">MYSELF (For an individual)</option>
+                                <option value="group">GROUP (For myself and my peers)</option>
+                            </select><br>
+                        </div>&nbsp;
+                    <h5>Have you ever tried using our services before?</h5>
+                        <div class="row justify-content-center">
+                        <input type="radio" id="yes" name="choice" value="true">
+                        <label for="yes">&nbsp;Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" id="no" name="choice" value="false">
+                        <label for="css">&nbsp;No</label>
+                        <!-- {% if yes.value == 'true' %}
+                            <h5>What service did you use?</h5>
+                                <div class="row justify-content-center">
+                                    <input type="checkbox" id="service1" name="service1" value="counseling">
+                                    <label for="service1">Counseling</label><br>
+                                    <input type="checkbox" id="service2" name="service2" value="hdggp">
+                                    <label for="service2">Human Development and Group Guidance Programs</label><br>
+                                    <input type="checkbox" id="service3" name="service3" value="psych">
+                                    <label for="service3">Psychological Testing</label><br>
+                                    <input type="checkbox" id="service4" name="service4" value="cds">
+                                    <label for="service4">Career Development Program</label><br>
+                                </div>&nbsp;  
+                        {% endif %}  -->
+                        </div>&nbsp;
+                    <h5>What college are you in?</h5>
+                        <div class="row justify-content-center">
+                        <label for="type"></label>
+                        <select name="college">
+                            <option value="CAS">College of Arts and Sciences</option>
+                            <!-- {% if value == "CAS" %}
+                                <div class="row justify-content-center">
+                                    <label for="type"></label>
+                                        <select name="course">
+                                            <option value="appmath">Applied Mathemetics</option>
+                                            <option value="bio">Biology</option>
+                                            <option value="chem">Chemistry</option>
+                                            <option value="cms">Communication and Media Studies</option>
+                                            <option value="comdev">Community Development</option>
+                                            <option value="komsai">Computer Science</option>
+                                            <option value="econ">Economics</option>
+                                            <option value="hist">History</option>
+                                            <option value="lit">Literature</option>
+                                            <option value="polsci">Political Science</option>
+                                            <option value="psych">Psychology</option>
+                                        </select><br>&nbsp;
+                                </div>
+                            {% endif %} -->
+                            <option value="CFOS">College of Fisheries and Ocean Sciences</option>
+                            <!-- {% if value == "CFOS" %}
+                                <div class="row justify-content-center">
+                                    <label for="type"></label>
+                                        <select name="course">
+                                            <option value="appmath">Fisheries</option>
+                                        </select><br>&nbsp;
+                                </div>
+                            {% endif %} -->
+                            <option value="CM">College of Management</option>
+                            <!-- {% if value == "CM" %}    
+                                <div class="row justify-content-center">
+                                    <label for="type"></label>
+                                        <select name="course">
+                                            <option value="acct">Accountancy</option>
+                                            <option value="busad">Business Administration</option>
+                                            <option value="mngt">Management</option>
+                                        </select><br>&nbsp;
+                                </div>
+                            {% endif %} -->
+                            <option value="SoTech">School of Technology</option>
+                            <!-- {% if value == "SoTech" %}
+                                <div class="row justify-content-center">
+                                    <label for="type"></label>
+                                        <select name="course">
+                                            <option value="chemEng">Chemical Engineering</option>
+                                            <option value="foodTech">Food Tech</option>
+                                        </select><br>&nbsp;
+                                </div>
+                            {% endif %} -->
+                            <option value="UPVTC">UPV Tacloban College</option>
+                            <!-- {% if value == "UPVTC" %}
+                                <label for="type"></label>
+                                        <select name="course">
+                                            <option value="acct">Accountancy</option>
+                                            <option value="bio">Biology</option>
+                                            <option value="ca">Communication Arts</option>
+                                            <option value="komsai">Computer Science</option>
+                                            <option value="econ">Economics</option>
+                                            <option value="mngt">Management</option>
+                                            <option value="polsci">Political Science</option>
+                                            <option value="psych">Psychology</option>
+                                        </select><br>&nbsp;
+                            {% endif %} -->
+                        </select><br>
+                        </div>&nbsp;
+                  <!-- Questions:
+                  <h5>What are you in the UPV community?</h5>
+                  <h5>Pang-ilang taon mo na sa kolehiyo?</h5>
+                  <h5>When is your birthday?</h5>
+                  <h5>How old are you?</h5>
+                  <h5>Sex</h5>
+                  <h5>Gender</h5>
+                  <h5>Last Name</h5>
+                  <h5>First Name</h5>
+                  <h5>Middle Name</h5>
+                  <h5>UPmail</h5>
+                  <h5>Password</h5> -->
+                        <!-- <h4>What type of service are you looking for?</h4>
+                        <div class="row justify-content-center">
+                            <div class="form-group col-sm-10 button"> <button type="submit" class="btn btn-block btn-primary active">MYSELF (For an individual)</button> <button type="submit" class="btn btn-block btn-primary active">GROUP (For myself and my peers)</button> </div>
+                        </div> -->
+                      <!-- <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <label class="form-control-label px-3">First name<span class="text-danger"> *</span>
+                            </label> 
+                            <input required type="text" id="fname" name="fname" placeholder="Enter your first name" onblur="validate(1)"> 
+                        </div>
+
+                        <div class="form-group col-sm-6 flex-column d-flex"> 
+                            <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> 
+                            <input required type="text" id="lname" name="lname" placeholder="Enter your last name" onblur="validate(2)"> 
+                        </div>
+
+                        </div>
+
+                        <div class="row justify-content-between text-left">
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">Email<span class="text-danger"> *</span>
+                                </label> 
+                                <input type="text" id="email" name="email" placeholder="" onblur="validate(3)"> 
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                             <label class="form-control-label px-3">Phone number<span class="text-danger"> *</span></label> 
+                              <input type="text" id="mob" name="mobile" placeholder="" onblur="validate(4)"> 
+                            </div>
+
+                        </div>
+
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-12 flex-column d-flex"> 
+                                <label class="form-control-label px-3">Your request<span class="text-danger"> *</span></label> 
+                                <textarea type="text" id="ans" name="request" placeholder="" onblur="validate(6)"></textarea> 
+                            </div>
+                        </div> -->
+                        <div class="row justify-content-center">
+                            <div><a href="{% url 'home' %}" class="btn btn-primary active" role="button" aria-pressed="true">Sign In</a>
+                                <a href="{% url 'home' %}" class="btn btn-primary active" role="button" aria-pressed="true">Cancel Sign In</a></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row justify-content-center mx-auto">
+                        <p>Already have an account yet?&nbsp;<a href="{% url 'login' %}" class="btn btn-primary active" role="button" aria-pressed="true">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endblock content %}
+
+        {% block script %}
+
+        function validate(val) {
+            v1 = document.getElementById("email");
+            v2 = document.getElementById("password");
+
+            flag1 = true;
+            flag2 = true;
+
+            if(val>=1 || val==0) {
+                if(v1.value == "") {
+                    v1.style.borderColor = "red";
+                    flag1 = false;
+                }
+                else {
+                    v1.style.borderColor = "green";
+                    flag1 = true;
+                }
+            }
+
+            if(val>=2 || val==0) {
+                if(v2.value == "") {
+                    v2.style.borderColor = "red";
+                    flag2 = false;
+                }
+                else {
+                    v2.style.borderColor = "green";
+                    flag2 = true;
+                }
+            }
+
+            flag = flag1 && flag2;
+
+            return flag;
+        }
+        {% endblock script %}
