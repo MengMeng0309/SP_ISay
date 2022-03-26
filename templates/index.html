@@ -65,39 +65,39 @@
     <div class="text-center py-5 mb-4" style="background-color: rgb(148, 210, 189);">
         <div class="container" style="background-color: rgb(148, 210, 189);">
             <h1 class="fw-light text-white">UPV-GCS Team</h1>
-            <p class="intro">Get to know our guidance counselors and know how they might lend you a hand.
+            <p class="intro">Get to know your designated guidance counselors and how they might lend you a hand.
             </p>
         </div>
     </div>
 
     <div class="container">
+
       <!-- Team item -->
       <div class="row">
         <div class="card-team">
-          <img class="card-team-img center" src="{% static '/img/missIsayTeam.png' %}" alt="">
+          <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
+          <h5 class="member_name">Ms. Juvy T. Janeo, RGC</h5>
+          <span class="small text-uppercase text-muted text-center">CM, Senior High (UPHSI)</span>
+        </div>
+      <!-- Team item -->
+        <div class="card-team">
+          <img class="card-team-img center" src="{% static '/img/teaMember.png' %}" alt="">
           <h5 class="member_name">Ms. Teresa S. Hortillo, RGC</h5>
-          <span class="small text-uppercase text-muted text-center">Info about her.</span>
+          <span class="small text-uppercase text-muted text-center">CFOS, CAS: AppMath, Chem, Stat, & Lit</span>
         </div>
 
         <!-- Team item -->
         <div class="card-team">
-          <img class="card-team-img" src="{% static '/img/missPaulaTeam.jpg' %}" alt="">
-          <h5 class="member_name">Ms. Paula Khyrss Ushiyama</h5>
-          <span class="small text-uppercase text-muted text-center">Info about her.</span>
+          <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
+          <h5 class="member_name">Ms. Annie A. Manzano, RGC</h5>
+          <span class="small text-uppercase text-muted text-center">SoTech, CAS: Econ, PolSci, Hist, & ComDev</span>
         </div>
 
         <!-- Team item -->
         <div class="card-team">
-          <img class="card-team-img" src="{% static '/img/team3.jpg' %}" alt="">
-          <h5 class="member_name">Miss Sarra Lahbati, LOL</h5>
-          <span class="small text-uppercase text-muted text-center">Consultant dermatologist</span>
-        </div>
-
-        <!-- Team item -->
-        <div class="card-team">
-          <img class="card-team-img" src="{% static '/img/team4.png' %}" alt="">
-          <h5 class="member_name">Mr. John Doe, IDK</h5>
-          <span class="small text-uppercase text-muted text-center">Consultant Obstetrician</span>
+          <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
+          <h5 class="member_name">Ms. Paula Khyrss Ushiyama, RGC</h5>
+          <span class="small text-uppercase text-muted text-center">Junior High (UPHSI), CAS: PH, ComSci, CMS, Psych, & Socio</span>
         </div>
         
         <p style="margin-left: auto; margin-right: auto;"><a href="{% url 'team' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">See more >></a></p>
@@ -111,7 +111,7 @@
   <div class="text-center py-5 mb-4" style="background-color: rgb(148, 210, 189);">
       <div class="container" style="background-color: rgb(148, 210, 189);">
         <h1 class="fw-light text-white">Services</h1>
-        <p class="overview">We provide counseling, Human Development and Group Guidance Programs, Psychological Testing, and Career Development Sessions to the UPV Community.</p>
+        <p class="overview">We provide counseling, psychological testing, career guidance, graduate placement and follow up, human development services, and peer facilitating program to the UPV Community.</p>
       </div>
     </div>
   <div class="container">
@@ -128,31 +128,41 @@
       <!-- Service 2 -->
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card-services">
-          <img src="{% static '/img/hdaggp.jpg' %}" class="card-services-img" alt="...">
-          <div class="card-body text-center">
-            <h5 class="card-title mb-0">Human Development and Group Guidance Programs</h5>
-          </div>
-        </div>
-      </div>
-      <!-- Service 3 -->
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card-services">
           <img src="{% static '/img/pt.jpg' %}" class="card-services-img" alt="...">
           <div class="card-body text-center">
             <h5 class="card-title mb-0">Psychological Testing</h5>
           </div>
         </div>
       </div>
-      <!-- Service 4 -->
+      <!-- Service 3 -->
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card-services">
           <img src="{% static '/img/cds.jpg' %}" class="card-services-img" alt="...">
           <div class="card-body text-center">
-            <h5 class="card-title mb-0">Career Development Sessions</h5>
+            <h5 class="card-title mb-0">Career Guidance, Graduate Placement and Follow-up</h5>
           </div>
         </div>
       </div>
-      <p style="margin-left: auto; margin-right: auto;"><a href="{% url 'services' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Click to Show Info >></a></p>
+      <!-- Service 4 -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card-services">
+          <img src="{% static '/img/hdaggp.jpg' %}" class="card-services-img" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Human Development Services</h5>
+          </div>
+        </div>
+      </div>
+      <!-- Service 5 -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card-services">
+          <img src="{% static '/img/hdaggp.jpg' %}" class="card-services-img" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Peer Facilitating Program</h5>
+          </div>
+        </div>
+      </div>
+      
+      <p style="margin: auto;"><a href="{% url 'services' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Click to Show Info >></a></p>
     </div>
     <!-- /.row -->
   

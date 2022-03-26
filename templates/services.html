@@ -1,62 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block style %}
 
-   .card {
-    padding: 30px 40px;
-    margin: 0 auto;
-    margin-top: 60px;
-    margin-bottom: 60px;
-        border: none !important;
-        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+   .card-services {
+    width: 500px;
+    height: 700px;
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 3px solid lightcoral;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+    position: block
     }
 
-    .green-text {
-        color: rgb(10, 147, 150)
-    }
-
-    .form-control-label {
-        margin-bottom: 0
-    }
-
-    input,
-    textarea,
-    button {
-        padding: 8px 15px;
-        border-radius: 5px !important;
-        margin: 5px 0px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        font-size: 18px !important;
-        font-weight: 300
-    }
-
-    input:focus,
-    textarea:focus {
-        -moz-box-shadow: none !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        border: 1px solid #00BCD4;
-        outline-width: 0;
-        font-weight: 400
-    }
-
-    .btn-block {
-        text-transform: uppercase;
-        font-size: 15px !important;
-        font-weight: 400;
-        height: 43px;
-        cursor: pointer
-    }
-
-    .btn-block:hover {
-        color: #fff !important
-    }
-
-    button:focus {
-        -moz-box-shadow: none !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        outline-width: 0
+  .card-services-img {
+    display: inherit;
+    width: 250px;
+    height: 200px;
+    margin: auto;
+    border: 3px solid rgb(148, 210, 189);
+    border-radius: 15px
     }
 
 {% endblock style %}
@@ -80,8 +43,77 @@
                 <h2>
                     Services
                 </h2>
+                <p class="overview">In support of the academiv programs of the University, the Office of the Student Affairs (OSA), headed by the Director, is committed to the holistic development of students. - UPV Handbook (p. 33), 2020</p>
             </div>
         </div>
+    </div>
+
+    <div class="container">
+    <div class="row">
+      <!-- Service 1 -->
+      <div class="column mx-auto">
+        <div class="card-services">
+          <img src="{% static '/img/counseling.jpg' %}" class="card-services-img" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Counseling</h5>
+            <span><br>Students are guided in making decisions about personal, vocational, and educational concerns with the help of a professional counselor. Counseling sessions are done with individual students or group. Students are accommodated either as scheduled, walk-in, or through remote platforms.<br><br>In order to make the OSA services more accessible to the students, the Guidance Services Specialists have been deployed for each college/school. The Guidance and Counseling Office has been established in each college/school.</span><br>
+            <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Inquire</a>
+            <a href="{% url 'team' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Our Team</a>
+            <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a>
+          </div>
+        </div>
+      </div>
+      <!-- Service 1 -->
+      <div class="column mx-auto">
+        <div class="card-services">
+          <img src="{% static '/img/pt.jpg' %}" class="card-services-img" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Psychological Testing</h5>
+            <span><br>Data on the personal attributes of students like mental abilities, aptitudes, interests, and other personality characteristics are taken through batteries of psychological tests given during the students' first year or as needed during their residency in the University.<br><br>Psychological test results are also used as tools in the counseling process.</span><br>
+            <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Inquire</a>
+            <a href="{% url 'team' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Our Team</a>
+            <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a>
+          </div>
+        </div>
+      </div>
+      <!-- Service 1 -->
+      <div class="column mx-auto">
+        <div class="card-services">
+          <img src="{% static '/img/counseling.jpg' %}" class="card-services-img" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Career Guidance, Graduate Placement and Follow-up</h5>
+            <span><br>As soon as a first-year/undergraduate student enters the University, he/she is guided in identifying and developing career choices through initial interviews either as scheduled, walk-in, or through remote platforms. Career aptitudes and interests are discussed with professional Guidance Services Specialists, taking into consideration their psychological test results. These are followed up in subsequent counselling sessions. When they graduate, students are informed of job placement opportunities and followed up as to their career prospects. Exit interviews are requested for all students before they leave the University.</span><br>
+            <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Inquire</a>
+            <a href="{% url 'team' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Our Team</a>
+            <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a>
+          </div>
+        </div>
+      </div>
+      <div class="column mx-auto">
+        <div class="card-services">
+          <img src="{% static '/img/counseling.jpg' %}" class="card-services-img" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Human Development Services</h5>
+            <span><br>Various groups of students are brought together in group dynamics activities and structured learning experiences where they learn to become aware of, responsive to, and effective in handling personal and interpersonal relationships. Experiences gleaned from these activities contribute to their growth and deveopment as human beings. The Personal Effectiveness Program (PEP), a 16-hr session conducted every first semester for first year students, is one of the human development services facilitated by the Guidance Services Specialists of OSA. For AY 2020 - 2021, PEP will be done through remote platforms.</span><br>
+            <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Inquire</a>
+            <a href="{% url 'team' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Our Team</a>
+            <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a>
+          </div>
+        </div>
+      </div>
+      <div class="column mx-auto">
+        <div class="card-services">
+          <img src="{% static '/img/counseling.jpg' %}" class="card-services-img" alt="...">
+          <div class="card-body text-center">
+            <h5 class="card-title mb-0">Peer Facilitating Program</h5>
+            <span><br>The program is a volunteer service of trained students under the supervision of a Guidance Services Specialists. The Peer Facilitators work hand-in-hand with the Guidance Services Specialist to assist the students in coping with the challenges of college life and to expedite personal growth and development through psychological activities. At the same time, the volunteers enhance their personalities through interactionwith their peers and through the training that they undergo. The Peer Facilitators Program is open to second year and third year students who pass the Screening Process.</span><br>
+            <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Inquire</a>
+            <a href="{% url 'team' %}" type="button" class="btn btn-primary btn-lg action-button" style="margin: 5px; color: black;">Our Team</a>
+            <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a>
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
 
 {% endblock content %}

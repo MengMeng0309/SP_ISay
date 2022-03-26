@@ -1,63 +1,36 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block style %}
 
-   .card {
-    padding: 30px 40px;
-    margin: 0 auto;
-    margin-top: 60px;
-    margin-bottom: 60px;
-        border: none !important;
-        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
-    }
+   .card-team {
+    width: 950px;
+    height: 450px;
+    padding: 20px 20px 20px 20px;
+    margin: 10px;
+    border-radius: 25px;
+    border: 5px solid lightcoral;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgb(248, 237, 235);
+  }
 
-    .green-text {
-        color: rgb(10, 147, 150)
-    }
+  .card-team-img {
+    display: block;
+    position: relative;
+    margin: 50px 10px;
+    width: 200px;
+    height: 300px;
+    border: 3px solid rgb(148, 210, 189);
+    border-radius: 50%
+  }
 
-    .form-control-label {
-        margin-bottom: 0
-    }
+  .member_name{
+    position: relative;
+    margin: -110px 10px;
+    left: 230px;
+    top: -280px;
+  }
 
-    input,
-    textarea,
-    button {
-        padding: 8px 15px;
-        border-radius: 5px !important;
-        margin: 5px 0px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        font-size: 18px !important;
-        font-weight: 300
-    }
 
-    input:focus,
-    textarea:focus {
-        -moz-box-shadow: none !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        border: 1px solid #00BCD4;
-        outline-width: 0;
-        font-weight: 400
-    }
-
-    .btn-block {
-        text-transform: uppercase;
-        font-size: 15px !important;
-        font-weight: 400;
-        height: 43px;
-        cursor: pointer
-    }
-
-    .btn-block:hover {
-        color: #fff !important
-    }
-
-    button:focus {
-        -moz-box-shadow: none !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        outline-width: 0
-    }
 
 {% endblock style %}
 
@@ -80,8 +53,56 @@
                 <h2>
                     UPV-GCS Team
                 </h2>
+                <p class="overview">The UP Visayas community takes mental health awareness seriously. That is why the Office of the Student Affairs (OSA) has organized the Guidance and Counseling Services Unit - to make sure that no one is left behind in dealing with the aftereffects of the real world's and academe's stress. Take a look at the designated guidance counselors whom you can reach out for help.</p>
             </div>
         </div>
     </div>
+
+    <div class="container">
+
+      <!-- Team item -->
+      <div class="row">
+        <div class="column mx-auto">
+        <div class="card-team">
+          <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
+          <div class="member_name"><h5>Ms. Juvy T. Janeo, RGC</h5>
+          <span>Designation: Guidance Counselor, College of Management, Senior High (UPHSI)<br>Email Address: jtjnaeo@up.edu.ph<br>Contact Number: 0912356789<br>Educational Background:<br><br><br><br><br>Seminars And Experiences:<br><br><br><br><br></span>
+          <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -300px; color: black;">Book an appointment</a> &#9;
+          <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -310px; color: black;">Message</a>
+          </div>
+        </div>
+        </div>
+        <div class="column mx-auto">
+        <div class="card-team">
+          <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
+          <div class="member_name"><h5>Ms. Teresa S. Hortillo, RGC</h5>
+          <span>Designation: Guidance Counselor, College of Management, Senior High (UPHSI)<br>Email Address: tshortillo@up.edu.ph<br>Contact Number: 0912356789<br>Educational Background:<br><br><br><br><br>Seminars And Experiences:<br><br><br><br><br></span>
+          <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -300px; color: black;">Book an appointment</a> &#9;
+          <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -310px; color: black;">Message</a>
+          </div>
+        </div>
+        </div>
+        <div class="column mx-auto">
+        <div class="card-team">
+          <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
+          <div class="member_name"><h5>Ms. Annie A. Manzano, RGC</h5>
+          <span>Designation: Guidance Counselor, College of Management, Senior High (UPHSI)<br>Email Address: aamanzano@up.edu.ph<br>Contact Number: 0912356789<br>Educational Background:<br><br><br><br><br>Seminars And Experiences:<br><br><br><br><br></span>
+          <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -300px; color: black;">Book an appointment</a> &#9;
+          <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -310px; color: black;">Message</a>
+          </div>
+        </div>
+        </div>
+        <div class="column mx-auto">
+        <div class="card-team">
+          <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
+          <div class="member_name"><h5>Ms. Paula Khryss Ushiyama, RGC</h5>
+          <span>Designation: Guidance Counselor, College of Management, Senior High (UPHSI)<br>Email Address: ppushiyama@up.edu.ph<br>Contact Number: 0912356789<br>Educational Background:<br><br><br><br><br>Seminars And Experiences:<br><br><br><br><br></span>
+          <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -300px; color: black;">Book an appointment</a> &#9;
+          <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -310px; color: black;">Message</a>
+          </div>
+        </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
