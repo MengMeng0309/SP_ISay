@@ -1,6 +1,48 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block style %}
+
+  .card-team {
+    width: 250px;
+    height: 350px;
+    padding: 20px 20px 20px 20px;
+    margin: 10px;
+    border-radius: 25px;
+    border: 5px solid lightcoral;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgb(248, 237, 235);
+    position: inherit;
+    text-align: center;
+  }
+
+  .card-team-img {
+    width: 150px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid rgb(148, 210, 189);
+    border-radius: 50%
+  }
+
+  .card-services {
+    height: 310px;
+    border: 3px solid lightcoral;
+    border-radius: 20px;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
+    position: inherit;
+  }
+
+  .card-services-img {
+    width: 250px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3px solid rgb(148, 210, 189);
+    border-radius: 15px
+  }
+
+{% endblock style %}
 {% block cta %}
 <div class="container hero">
   <div class="row">
@@ -19,111 +61,105 @@
 {% endblock cta %}
 
 {% block content %}
-<section class="container py-5"  style="margin-block:100px;" id="team">
-    <div class="row text-center ">
-        <div class="col-lg-8 mx-auto">
-            <h1 class="display-4">UPV-GCS Team</h1>
-            <p class="lead">Get to know our guidance counselors and know how they might lend you a hand.
+<section style="margin-block:50px;" id="team">
+    <div class="text-center py-5 mb-4" style="background-color: rgb(148, 210, 189);">
+        <div class="container" style="background-color: rgb(148, 210, 189);">
+            <h1 class="fw-light text-white">UPV-GCS Team</h1>
+            <p class="intro">Get to know our guidance counselors and know how they might lend you a hand.
             </p>
         </div>
     </div>
 
     <div class="container">
-        <div class="row text-center">
-
-            <!-- Team item -->
-            <div class="col-xl-3 col-sm-6 mb-5">
-                <div class="container" style="width: 250px; height: 300px; border: 5px solid lightcoral; border-radius:  25px; margin: auto; padding: 20px 20px 20px 20px; background-color: rgb(248, 237, 235)"><img src="{% static '/img/missIsayTeam.png' %}" alt="" style="width: auto; border: 3px solid rgb(148, 210, 189); border-radius: 50%;">
-                    <h5 class="mb-0">Ms. Teresa S. Hortillo, RGC</h5>
-                    <span class="small text-uppercase text-muted">Info about her.</span>
-                </div>
-            </div><!-- End -->
-
-            <!-- Team item -->
-            <div class="col-xl-3 col-sm-6 mb-5">
-                <div class="container" style="width: 250px; height: 300px; border: 5px solid lightcoral; border-radius: 25px; margin: auto; padding: 20px 20px 20px 20px; background-color: rgb(248, 237, 235)"><img src="{% static '/img/missPaulaTeam.jpg' %}" alt="" style="width: 150px; border: 3px solid rgb(148, 210, 189); border-radius: 50%;">
-                    <h5 class="mb-0">Ms. Paula Khyrss Ushiyama</h5>
-                    <span class="small text-uppercase text-muted">Info about her.</span>
-                </div>
-            </div><!-- End -->
-
-            <!-- Team item -->
-            <div class="col-xl-3 col-sm-6 mb-5">
-                <div class="container" style="width: 250px; height: 300px; border: 5px solid lightcoral; border-radius:  25px; margin: auto; padding: 20px 20px 20px 20px; background-color: rgb(248, 237, 235)"><img src="{% static '/img/team3.jpg' %}" alt="" style="width: 200px; border: 3px solid rgb(148, 210, 189); border-radius: 50%;">
-                    <h5 class="mb-0">Dr Sarra</h5>
-                    <span class="small text-uppercase text-muted">Consultant dermatologist</span>
-                </div>
-            </div><!-- End -->
-
-            <!-- Team item -->
-            <div class="col-xl-3 col-sm-6 mb-5">
-                <div class="container" style="width: 250px; height: 300px; border: 5px solid lightcoral; border-radius:  25px; margin: auto; padding: 20px 20px 20px 20px; background-color: rgb(248, 237, 235)"><img src="{% static '/img/team4.png' %}" alt="" style="width: 200px; border: 3px solid rgb(148, 210, 189); border-radius: 50%;">
-                    <h5 class="mb-0">DR John</h5>
-                    <span class="small text-uppercase text-muted">Consultant Obstetrician</span>
-                </div>
-            </div><!-- End -->
+      <!-- Team item -->
+      <div class="row">
+        <div class="card-team">
+          <img class="card-team-img center" src="{% static '/img/missIsayTeam.png' %}" alt="">
+          <h5 class="member_name">Ms. Teresa S. Hortillo, RGC</h5>
+          <span class="small text-uppercase text-muted text-center">Info about her.</span>
         </div>
+
+        <!-- Team item -->
+        <div class="card-team">
+          <img class="card-team-img" src="{% static '/img/missPaulaTeam.jpg' %}" alt="">
+          <h5 class="member_name">Ms. Paula Khyrss Ushiyama</h5>
+          <span class="small text-uppercase text-muted text-center">Info about her.</span>
+        </div>
+
+        <!-- Team item -->
+        <div class="card-team">
+          <img class="card-team-img" src="{% static '/img/team3.jpg' %}" alt="">
+          <h5 class="member_name">Miss Sarra Lahbati, LOL</h5>
+          <span class="small text-uppercase text-muted text-center">Consultant dermatologist</span>
+        </div>
+
+        <!-- Team item -->
+        <div class="card-team">
+          <img class="card-team-img" src="{% static '/img/team4.png' %}" alt="">
+          <h5 class="member_name">Mr. John Doe, IDK</h5>
+          <span class="small text-uppercase text-muted text-center">Consultant Obstetrician</span>
+        </div>
+        
+        <p style="margin-left: auto; margin-right: auto;"><a href="{% url 'team' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">See more >></a></p>
+      </div>
     </div>
 </section><!-- End -->
 
 
 
-<section id="services">
+<section id="services" style="margin-block:50px;">
   <div class="text-center py-5 mb-4" style="background-color: rgb(148, 210, 189);">
       <div class="container" style="background-color: rgb(148, 210, 189);">
         <h1 class="fw-light text-white">Services</h1>
-        <p class="overview">We provide counseling, Human Development and Group Guidance Programs, Psychological Testing, and Career Development Sessions to the UPV Community. Click on to know more.</p>
+        <p class="overview">We provide counseling, Human Development and Group Guidance Programs, Psychological Testing, and Career Development Sessions to the UPV Community.</p>
       </div>
     </div>
   <div class="container">
     <div class="row">
       <!-- Service 1 -->
       <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="{% static '/img/counseling.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-services">
+          <img src="{% static '/img/counseling.jpg' %}" class="card-services-img" alt="...">
           <div class="card-body text-center">
             <h5 class="card-title mb-0">Counseling</h5>
-            <div class="card-text text-black-50">Your mental health professionals.</div>
           </div>
         </div>
       </div>
       <!-- Service 2 -->
       <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="{% static '/img/hdaggp.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-services">
+          <img src="{% static '/img/hdaggp.jpg' %}" class="card-services-img" alt="...">
           <div class="card-body text-center">
             <h5 class="card-title mb-0">Human Development and Group Guidance Programs</h5>
-            <div class="card-text text-black-50">Info about this.</div>
           </div>
         </div>
       </div>
       <!-- Service 3 -->
       <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="{% static '/img/pt.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-services">
+          <img src="{% static '/img/pt.jpg' %}" class="card-services-img" alt="...">
           <div class="card-body text-center">
             <h5 class="card-title mb-0">Psychological Testing</h5>
-            <div class="card-text text-black-50">Info about this.</div>
           </div>
         </div>
       </div>
       <!-- Service 4 -->
       <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-0 shadow">
-          <img src="{% static '/img/cds.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-services">
+          <img src="{% static '/img/cds.jpg' %}" class="card-services-img" alt="...">
           <div class="card-body text-center">
             <h5 class="card-title mb-0">Career Development Sessions</h5>
-            <div class="card-text text-black-50">Info about this.</div>
           </div>
         </div>
       </div>
+      <p style="margin-left: auto; margin-right: auto;"><a href="{% url 'services' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Click to Show Info >></a></p>
     </div>
     <!-- /.row -->
   
   </div>
 </section>
 
-<section class="text-center conatiner" style="margin-block:200px;" id="reviews">
+<section class="text-center container" style="margin-block:200px;" id="reviews">
     <h2>News and Announcement Posts</h2>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Carousel indicators -->

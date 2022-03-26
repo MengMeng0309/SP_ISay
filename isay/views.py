@@ -26,6 +26,15 @@ class HomeTemplateView(TemplateView):
     #     email.send()
     #     return HttpResponse("Email sent successfully!")
 
+class Home2TemplateView(TemplateView):
+    template_name = "index.html"
+
+class TeamTemplateView(TemplateView):
+    template_name = "team.html"
+
+class ServicesTemplateView(TemplateView):
+    template_name = "services.html"
+
 class AppointmentTemplateView(TemplateView):
     template_name = "appointment.html"
 
