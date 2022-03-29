@@ -35,12 +35,15 @@ class TeamTemplateView(TemplateView):
 class ServicesTemplateView(TemplateView):
     template_name = "services.html"
 
+class NewsTemplateView(TemplateView):
+    template_name = "news.html"
+
 class AppointmentTemplateView(TemplateView):
     template_name = "appointment.html"
 
     def post(self, request):
         fname = request.POST.get("fname")
-        lname = request.POST.get("fname")
+        lname = request.POST.get("lname")
         email = request.POST.get("email")
         mobile = request.POST.get("mobile")
         message = request.POST.get("request")
@@ -60,7 +63,16 @@ class AppointmentTemplateView(TemplateView):
 
 class ManageAppointmentTemplateView(TemplateView):
     template_name = "manage-appointments.html"
-    login_required = True
+    # login_required = True
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        appointments = Appointment.objects.all()
+        context.update({
+            "appointments": appointments,
+            "title": "Manage Appointments"
+        })
+        return context
 
 class LoginTemplateView(TemplateView):
     template_name = "login.html"
