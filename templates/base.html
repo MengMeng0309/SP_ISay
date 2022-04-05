@@ -19,6 +19,7 @@
 </style>
 
 <body>
+<a name="top"></a>
 
   <div class="header"
   style="background-color: rgb(202, 240, 248);
@@ -71,7 +72,7 @@
     </nav>
    
    {% block cta %}{% endblock cta %}
-</div>
+    </div>
 
 {% block content %}{% endblock content %}
 
@@ -80,7 +81,9 @@
   <script> 
         {% block script %}{% endblock script %}
   </script>
- 
+
+    <div class="footer" id = "container" style="display: flex; justify-content: center; text-align: center; padding: 5px; background-color: rgb(148, 210, 189);"><p>iSay: UPV-GCS Unofficial Website<br>CMSC 198 Series: Special Problem<br>&copy; 2022<br><br><a href="#top">Back to top of page</a></p>
+    </div>
 </body>
 
 </html>

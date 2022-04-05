@@ -182,57 +182,98 @@ button:focus {
                             {% endif %} -->
                         </select><br>
                         </div>&nbsp;
-                  <!-- Questions:
-                  <h5>What are you in the UPV community?</h5>
-                  <h5>Pang-ilang taon mo na sa kolehiyo?</h5>
-                  <h5>When is your birthday?</h5>
-                  <h5>How old are you?</h5>
-                  <h5>Sex</h5>
-                  <h5>Gender</h5>
-                  <h5>Last Name</h5>
-                  <h5>First Name</h5>
-                  <h5>Middle Name</h5>
-                  <h5>UPmail</h5>
-                  <h5>Password</h5> -->
-                        <!-- <h4>What type of service are you looking for?</h4>
+                 <!--  Questions: -->
+                    <h5>What are you in the UPV community?</h5>
                         <div class="row justify-content-center">
-                            <div class="form-group col-sm-10 button"> <button type="submit" class="btn btn-block btn-primary active">MYSELF (For an individual)</button> <button type="submit" class="btn btn-block btn-primary active">GROUP (For myself and my peers)</button> </div>
-                        </div> -->
-                      <!-- <div class="row justify-content-between text-left">
-                            <div class="form-group col-sm-6 flex-column d-flex"> 
-                            <label class="form-control-label px-3">First name<span class="text-danger"> *</span>
-                            </label> 
-                            <input required type="text" id="fname" name="fname" placeholder="Enter your first name" onblur="validate(1)"> 
+                            <input type="radio" id="student" name="choice" value="student">
+                            <label for="yes">&nbsp;Student</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <!-- {% if value == "student" %}
+                                <h6>In what year are you on?</h6>
+                                    <div class="row justify-content-center">
+                                        <select name="type" id="year">
+                                            <option value="first">First Year</option>
+                                            <option value="second">Second Year</option>
+                                            <option value="third">Third Year</option>
+                                            <option value="fourth">Fourth Year</option>
+                                            <option value="fifth">Fifth Year</option>
+                                            <option value="nth">nth Year</option>
+                                        </select><br>
+                                    </div>
+                            {% endif %} -->
+                            <input type="radio" id="staff" name="choice" value="staff">
+                            <label for="css">&nbsp;Staff</label>
+                            <!-- {% if value == "staff" %}
+                                <select name="type" id="staff">
+                                    <option value="lecturing">Lecturing</option>
+                                    <option value="non-lecturing">Non-Lecturing</option>
+                                    <option value="utility">Utility</option>
+                                </select><br>
+                            {% endif %} -->
+                        </div><br>
+                    <h5>When is your birthday?</h5>
+                        <div class="row justify-content-center">
+                            <input type="date" id="birthday" name="birthday">
                         </div>
+                    <h5>How old are you?</h5>
+                        <div class="row justify-content-center">
+                            <input type="text" id="age" name="age">
+                            <!-- compute for the age using the input birthdate  -->                          
+                        </div><br>
+                    <h5>Sex</h5>
+                        <input type="radio" id="sex" name="choice" value="female">
+                        <label for="css">&nbsp;Female</label>&nbsp;&nbsp;&nbsp;&nbsp; 
+                        <input type="radio" id="sex" name="choice" value="male">
+                        <label for="css">&nbsp;Male</label>
+                    <h5>Gender</h5>
+                        <div class="row justify-content-center">
+                            <select name="type" id="gender">
+                                <option value="les">Lesbian</option>
+                                <option value="gay">Gay</option>
+                                <option value="bi">Bisexual</option>
+                                <option value="trans">Transgender</option>
+                                <option value="queer">Queer</option>
+                                <option value="inter">Intersex</option>
+                                <option value="ase">Asexual</option>
+                                <option value="plus">Others...</option>
+                            </select><br>
+                        </div><br>
 
-                        <div class="form-group col-sm-6 flex-column d-flex"> 
-                            <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> 
-                            <input required type="text" id="lname" name="lname" placeholder="Enter your last name" onblur="validate(2)"> 
-                        </div>
-
-                        </div>
-
+                    <h5>May I know your full name?</h5>
                         <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">Last Name<span class="text-danger"> *</span>
+                                </label> 
+                                <input required type="text" id="lname" name="lname" placeholder="Enter your last name" onblur="validate(1)"> 
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">First name<span class="text-danger"> *</span></label> 
+                                <input required type="text" id="fname" name="fname" placeholder="Enter your first name" onblur="validate(2)"> 
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">Middle name<span class="text-danger"> *</span></label> 
+                                <input required type="text" id="mname" name="mname" placeholder="Enter your middle name" onblur="validate(3)"> 
+                            </div>
 
                             <div class="form-group col-sm-6 flex-column d-flex"> 
                                 <label class="form-control-label px-3">Email<span class="text-danger"> *</span>
                                 </label> 
-                                <input type="text" id="email" name="email" placeholder="" onblur="validate(3)"> 
+                                <input type="text" id="email" name="email" placeholder="jdcruz@up.edu.ph" onblur="validate(4)"> 
                             </div>
 
                             <div class="form-group col-sm-6 flex-column d-flex"> 
-                             <label class="form-control-label px-3">Phone number<span class="text-danger"> *</span></label> 
-                              <input type="text" id="mob" name="mobile" placeholder="" onblur="validate(4)"> 
+                                <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> 
+                                <input type="text" id="password" name="password" placeholder="" onblur="validate(5)"> 
+                            </div>
+
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">Confirm Password<span class="text-danger"> *</span></label> 
+                                <input type="text" id="conpassword" name="conpassword" placeholder="" onblur="validate(6)"> 
                             </div>
 
                         </div>
 
-                        <div class="row justify-content-between text-left">
-                            <div class="form-group col-12 flex-column d-flex"> 
-                                <label class="form-control-label px-3">Your request<span class="text-danger"> *</span></label> 
-                                <textarea type="text" id="ans" name="request" placeholder="" onblur="validate(6)"></textarea> 
-                            </div>
-                        </div> -->
                         <div class="row justify-content-center">
                             <div><a href="{% url 'home' %}" class="btn btn-primary active" role="button" aria-pressed="true">Sign In</a>
                                 <a href="{% url 'home' %}" class="btn btn-primary active" role="button" aria-pressed="true">Cancel Sign In</a></div>
@@ -251,11 +292,19 @@ button:focus {
         {% block script %}
 
         function validate(val) {
-            v1 = document.getElementById("email");
-            v2 = document.getElementById("password");
+            v1 = document.getElementById("lname");
+            v2 = document.getElementById("fname");
+            v3 = document.getElementById("mname");
+            v4 = document.getElementById("email");
+            v5 = document.getElementById("password");
+            v6 = document.getElementById("conpassword");
 
             flag1 = true;
             flag2 = true;
+            flag3 = true;
+            flag4 = true;
+            flag5 = true;
+            flag6 = true;
 
             if(val>=1 || val==0) {
                 if(v1.value == "") {
@@ -279,7 +328,51 @@ button:focus {
                 }
             }
 
-            flag = flag1 && flag2;
+            if(val>=3 || val==0) {
+                if(v3.value == "") {
+                    v3.style.borderColor = "red";
+                    flag3 = false;
+                }
+                else {
+                    v3.style.borderColor = "green";
+                    flag3 = true;
+                }
+            }
+
+            if(val>=4 || val==0) {
+                if(v4.value == "") {
+                    v4.style.borderColor = "red";
+                    flag4 = false;
+                }
+                else {
+                    v4.style.borderColor = "green";
+                    flag4 = true;
+                }
+            }
+
+            if(val>=5 || val==0) {
+                if(v5.value == "") {
+                    v5.style.borderColor = "red";
+                    flag5 = false;
+                }
+                else {
+                    v5.style.borderColor = "green";
+                    flag5 = true;
+                }
+            }
+
+            if(val>=6 || val==0) {
+                if(v6.value == "") {
+                    v6.style.borderColor = "red";
+                    flag6 = false;
+                }
+                else {
+                    v6.style.borderColor = "green";
+                    flag6 = true;
+                }
+            }
+
+            flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6;
 
             return flag;
         }

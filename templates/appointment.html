@@ -114,12 +114,15 @@
                         </div>
 
                         <div class="row justify-content-between text-left">
-                            <div class="form-group col-12 flex-column d-flex"> 
-                                <label class="form-control-label px-3">Your request<span class="text-danger"> *</span></label> 
-                                <textarea type="text" id="ans" name="request" placeholder="" onblur="validate(6)"></textarea> 
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3">Preferred Date of Appointment<span class="text-danger"> *</span></label>
+                                <input type="date" name="date" class="form-control-label px-3" 
+                                    placeholder="dd-mm-yyyy" value=""
+                                    min="1997-01-01" max="2030-12-31">
+                                <input hidden="true" name="appointment-id" value="{{app.id}}">
                             </div>
                         </div>
-                        <div class="row justify-content-end">
+                        <div class="row justify-content-center">
                             <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Send</button> </div>
                         </div>
                     </form>
