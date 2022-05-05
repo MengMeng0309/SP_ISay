@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block style %}
+
+.card {
+  padding: 30px 40px;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: none !important;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+}
+
+.green-text {
+  color: rgb(10, 147, 150)
+}
+
+.form-control-label {
+  margin-bottom: 0
+}
+
+input,
+textarea,
+button {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  font-size: 18px !important;
+  font-weight: 300
+}
+
+input:focus,
+textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid #00BCD4;
+  outline-width: 0;
+  font-weight: 400
+}
+
+.btn-block {
+  text-transform: uppercase;
+  font-size: 15px !important;
+  font-weight: 400;
+  height: 43px;
+  cursor: pointer
+}
+
+.btn-block:hover {
+  color: #fff !important
+}
+
+button:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0
+}
+
+{% endblock style %}
+
+{% block content %}
+
+<div class="container px-1 py-5 mx-auto">
+  <div class="row d-flex justify-content-center">
+    <div class="col-xl-6 col-lg-7 col-md-8 col-9 text-center">
+      <h2>
+        Modify Profile Info
+      </h2>
+      <div class="card" style ="">
+
+        {% if user_form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <div id="form_errors">
+            {% for key, value in user_form.errors.items %}
+            <strong>{{ value }}</strong>
+            {% endfor %}
+          </div>
+
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-row justify-content-center text-center">
+            <div class="col-md-5">
+              <div class="form-group">
+                <label class="small mb-1">Username:</label>
+                {{ user_form.username }}<br>
+                <label class="small mb-1">Email:</label>
+                {{ user_form.email }}<br>
+              </div>
+              <div class="form-group justify-content-center">
+                <a href="{% url 'password_change' %}" type="button" class="btn btn-warning btn-lg action-button" style="color: black; margin-right: auto; margin-left: auto;">Change Password</a><br><br>
+                <label class="small mb-1">Change Avatar:</label>
+                {{ profile_form.avatar }}
+              </div>
+              <label class="small mb-1">Bio:</label>
+              {{ profile_form.bio }}
+              <br><button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
+              <button type="reset" class="btn btn-dark btn-lg">Reset</button><br><br>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

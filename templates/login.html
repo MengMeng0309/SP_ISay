@@ -63,18 +63,7 @@
 
 {% block content %}
 
-    {% if messages %}
-    <div class="card notification-card notification-invitation">
-        <div class="card-body">
-        {% for message in messages %}
-                <div class="card-title">{{message}} </div>
-            {% endfor %}
-        </div>
-      </div>
-
-    {% endif %}
-
-    <div class="container-fluid px-1 py-5 mx-auto">
+    <div class="container px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
             <div class="col-xl-6 col-lg-7 col-md-8 col-9 text-center">
                 <h2>
@@ -82,20 +71,42 @@
                 </h2>
                 <p class="green-text">Use the following form to login to iSay.</p>
                 <div class="card" style = "width: 25rem;">
+                {% if form.errors %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <div id="form_errors">
+                            {% for key, value in form.errors.items %}
+                                <strong>{{ value }}</strong>
+                            {% endfor %}
+                        </div>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
                     
                     <form class="form-card" method="POST" action= "{% url 'login' %}">
                     {% csrf_token %}   
 
                       <div class="form-group col-auto"> 
-                        <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> 
-                        <input type="text" id="email" name="email" placeholder="juandelacruz@up.edu.ph" onblur="validate(1)"> 
+                        <label class="form-control-label px-3">Username<span class="text-danger"> *</span></label> 
+                        {{ form.username }}
                       </div>
                       <div class="form-group col-auto"> 
                         <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> 
-                        <input type="text" id="password" name="password" placeholder="Password" onblur="validate(2)"> 
+                        {{ form.password }}
                       </div>
+                      <div class="form-row">
+                        <div class="col-md-10 offset-md-1">
+                            <div class="form-group">
+                                <!-- Add a Remember me functionality -->
+                                {{ form.remember_me }}
+                                <label> Remember me</label>
+                            </div>
+                        </div>
+                    </div>
                       <div class="row justify-content-center">
-                        <div><a href="{% url 'home' %}" class="btn btn-primary active" role="button" aria-pressed="true">Login</a>
+                        <div>
+                        <button name="login" class="btn btn-primary active" id="login">Sign in</button>
                         <a href="{% url 'home' %}" class="btn btn-primary active" role="button" aria-pressed="true">Cancel Login</a></div>
                       </div>
                       <div class="row justify-content-center">

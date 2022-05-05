@@ -23,7 +23,7 @@
 
   <div class="header"
   style="background-color: rgb(202, 240, 248);
-  background-image: url('../static/img/helpingHand.jpg');
+  background-image: url('../static/img/headerIsay.png');
   background-repeat: no-repeat;
   background-size: inherit;">
     
@@ -47,21 +47,52 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" href="{% url 'news' %}">News and Announcement Posts</a>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" href="#contact">Contact Us</a>
-                    </li>
-                    {% comment %} {% if request.user.is_authenticated %} {% endcomment %}
-                    <li class="nav-item" role="presentation">
-                      <a class="nav-link active" href="{% url 'manage' %}">Manage</a>
-                  </li>
-                  {% comment %} {% endif %} {% endcomment %}
-                  <li class="nav-item" role="presentation">
+                    {% if request.user.is_staff %}
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{% url 'profile' %}">
+                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Profile
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{% url 'manage' %}">Manage</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{% url 'team' %}">Messages</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% elif user.is_authenticated %}
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{% url 'profile' %}">
+                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Profile
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{% url 'team' %}">Messages</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% comment %}
+                    {% else %}
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" href="{% url 'login' %}">Sign in</a>
+                        </li>
+                    {% endcomment %}
+                    {% endif %}
+                
+                  <div class="navbar-nav ml-auto">
+                    
+  
+                  </div>
+                  {% comment %} <li class="nav-item" role="presentation">
                     <a href="manage-appointments.html" style="float: left;cursor:pointer;" aria-expanded="true" title="You Have 6 New Appointments">
                       <i class="far fa-bell" style="font-size: 20px; float: left; color: black">
                       </i>
                   </a>
                   <span class="badge badge-danger">6</span>
-                </li>
+                 </li> {% endcomment %}
                   
                     <!-- <li class="dropdown"><a class="dropdown-toggle nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Dropdown </a>
                         <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
@@ -70,6 +101,16 @@
             </div>
         </div>
     </nav>
+    {% if messages %}
+        <div class="alert alert-dismissible" role="alert">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+    {% endif %}
    
    {% block cta %}{% endblock cta %}
     </div>
@@ -84,6 +125,15 @@
 
     <div class="footer" id = "container" style="display: flex; justify-content: center; text-align: center; padding: 5px; background-color: rgb(148, 210, 189);"><p>iSay: UPV-GCS Unofficial Website<br>CMSC 198 Series: Special Problem<br>&copy; 2022<br><br><a href="#top">Back to top of page</a></p>
     </div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ 
+<!-- A plugin for password show/hide  -->
+<script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+
 </body>
 
 </html>

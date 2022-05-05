@@ -95,8 +95,14 @@
       <div class="col-10 col-lg-5 col-xl-6">
           <h1 style="color: black;"><br>Mental health is important in our UPV community.</h1>
           <p style="color: black;">With our knowledge, we lend you a helping hand.</p>
+              {% if request.user.is_staff %}
+              <a href="{% url 'manage' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Manage Appointments</a> &#9;
+              {% elif user.is_authenticated %}
               <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a> &#9;
+              {%else%}
+              <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a> &#9;
               <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Log In/Sign Up</a>
+              {%endif%}
       </div>
 
   </div>
