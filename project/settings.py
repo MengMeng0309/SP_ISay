@@ -4,6 +4,8 @@ from pathlib import Path
 from decouple import config 
 import os
 
+from django import conf
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -121,14 +123,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #Sending emails
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
-# MAILER_EMAIL_BACKEND = EMAIL_BACKEND  
-# EMAIL_HOST = 'your_mail_server'  
-# EMAIL_HOST_PASSWORD = 'your_password'  
-# EMAIL_HOST_USER = 'your_email'  
-# EMAIL_PORT = 465  
-# EMAIL_USE_SSL = True  
-# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_PASSWORD = config('EPASSWORD')
+EMAIL_HOST_USER = config('EADDRESS')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True  
 
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30

@@ -4,9 +4,18 @@ from django.contrib.auth.models import User
 from PIL import Image
 
 class Appointment(models.Model):
+    # SERVICES_CHOICES = (
+    #     ('C', 'Counseling'),
+    #     ('T', 'Psychological Testing'),
+    #     ('F', 'Career Guidance, Graduate Placement and Follow-up'),
+    #     ('H', 'Human Development Services'),
+    #     ('P', 'Peer Facilitating Program'),
+    # )
+
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
+    # services = models.CharField(max_length=1, choices=SERVICES_CHOICES)
     phone = models.CharField(max_length=50)
     request = models.TextField(blank=True)
     sent_date = models.DateField(auto_now_add=True)
