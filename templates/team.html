@@ -8,7 +8,7 @@
     padding: 20px 20px 20px 20px;
     margin: 10px;
     border-radius: 25px;
-    border: 5px solid lightcoral;
+    border: 5px solid rgb(117, 16, 17);
     box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
     background-color: rgb(248, 237, 235);
   }
@@ -19,8 +19,8 @@
     margin: 50px 10px;
     width: 200px;
     height: 300px;
-    border: 3px solid rgb(148, 210, 189);
-    border-radius: 50%
+    border: 3px solid rgb(0, 97, 0);
+    border-radius: 50%;
   }
 
   .member_name{
@@ -47,14 +47,12 @@
 
     {% endif %}
 
-    <div class="container px-1 py-5 mx-auto">
-        <div class="row d-flex justify-content-center">
-            <div class="col-xl-6 col-lg-7 col-md-8 col-9 text-center">
-                <h2>
-                    UPV-GCS Team
-                </h2>
-                <p class="overview">The UP Visayas community takes mental health awareness seriously. That is why the Office of the Student Affairs (OSA) has organized the Guidance and Counseling Services Unit - to make sure that no one is left behind in dealing with the aftereffects of the real world's and academe's stress. Take a look at the designated guidance counselors whom you can reach out for help.</p>
-            </div>
+    <div class="text-center py-5 mb-4" style="background-color: rgb(117, 16, 17);">
+        <div class="container text-white" style="background-color: rgb(117, 16, 17);">
+            <h2>
+                UPV-GCS Team
+            </h2>
+            <p class="overview">The UP Visayas community takes mental health awareness seriously. That is why the Office of the Student Affairs (OSA) has organized the Guidance and Counseling Services Unit - to make sure that no one is left behind in dealing with the aftereffects of the real world's and academe's stress. Take a look at the designated guidance counselors whom you can reach out for help.</p>
         </div>
     </div>
 
@@ -67,8 +65,12 @@
           <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
           <div class="member_name"><h5>Ms. Juvy T. Janeo, RGC</h5>
           <span>Designation: Guidance Counselor, College of Management, Senior High (UPHSI)<br>Email Address: jtjnaeo@up.edu.ph<br>Contact Number: 0912356789<br>Educational Background:<br><br><br><br><br>Seminars And Experiences:<br><br><br><br><br></span>
-          <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -300px; color: black;">Book an appointment</a> &#9;
-          <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -310px; color: black;">Message</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -300px; color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a> &#9;
+          <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -310px; color: whitesmoke; background-color: rgb(117, 16, 17);">Message</a>
+          {% else %}
+          <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -470px; color: whitesmoke; background-color: rgb(117, 16, 17);">Login/Signup</a>
+          {% endif %}
           </div>
         </div>
         </div>
@@ -77,8 +79,12 @@
           <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
           <div class="member_name"><h5>Ms. Teresa S. Hortillo, RGC</h5>
           <span>Designation: Guidance Counselor, College of Management, Senior High (UPHSI)<br>Email Address: tshortillo@up.edu.ph<br>Contact Number: 0912356789<br>Educational Background:<br><br><br><br><br>Seminars And Experiences:<br><br><br><br><br></span>
-          <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -300px; color: black;">Book an appointment</a> &#9;
-          <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -310px; color: black;">Message</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -300px; color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a> &#9;
+          <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -310px; color: whitesmoke; background-color: rgb(117, 16, 17);">Message</a>
+          {% else %}
+          <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -470px; color: whitesmoke; background-color: rgb(117, 16, 17);">Login/Signup</a>
+          {% endif %}
           </div>
         </div>
         </div>
@@ -87,8 +93,12 @@
           <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
           <div class="member_name"><h5>Ms. Annie A. Manzano, RGC</h5>
           <span>Designation: Guidance Counselor, College of Management, Senior High (UPHSI)<br>Email Address: aamanzano@up.edu.ph<br>Contact Number: 0912356789<br>Educational Background:<br><br><br><br><br>Seminars And Experiences:<br><br><br><br><br></span>
-          <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -300px; color: black;">Book an appointment</a> &#9;
-          <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -310px; color: black;">Message</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -300px; color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a> &#9;
+          <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -310px; color: whitesmoke; background-color: rgb(117, 16, 17);">Message</a>
+          {% else %}
+          <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -470px; color: whitesmoke; background-color: rgb(117, 16, 17);">Login/Signup</a>
+          {% endif %}
           </div>
         </div>
         </div>
@@ -97,8 +107,12 @@
           <img class="card-team-img" src="{% static '/img/teaMember.png' %}" alt="">
           <div class="member_name"><h5>Ms. Paula Khryss Ushiyama, RGC</h5>
           <span>Designation: Guidance Counselor, College of Management, Senior High (UPHSI)<br>Email Address: ppushiyama@up.edu.ph<br>Contact Number: 0912356789<br>Educational Background:<br><br><br><br><br>Seminars And Experiences:<br><br><br><br><br></span>
-          <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -300px; color: black;">Book an appointment</a> &#9;
-          <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="position: relative; right:  -310px; color: black;">Message</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -300px; color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a> &#9;
+          <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -310px; color: whitesmoke; background-color: rgb(117, 16, 17);">Message</a>
+          {% else %}
+          <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="position: relative; right:  -470px; color: whitesmoke; background-color: rgb(117, 16, 17);">Login/Signup</a>
+          {% endif %}
           </div>
         </div>
         </div>

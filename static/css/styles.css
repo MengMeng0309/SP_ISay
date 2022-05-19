@@ -3,8 +3,8 @@
 ##############*/
 
 .header {
-    background: rgb(177, 177, 177) url("img/headerIsay.png") no-repeat fixed center; 
-    min-height: 1000px;
+    background: url("img/headerIsay.png") no-repeat fixed center; 
+    min-height: auto;
     font-family:'Source Sans Pro', sans-serif;
   }
   

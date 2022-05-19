@@ -44,7 +44,7 @@
 
 /* Style the back side */
 .flip-card-back {
-	border: 3px solid lightcoral;
+	border: 3px solid rgb(117, 16, 17);
 	background-color: rgb(248, 237, 235);
 	transform: rotateY(180deg);
 }
@@ -63,16 +63,16 @@
 
     {% endif %}
 
-	<div class="container px-1 py-5 mx-auto">
-        <div class="row d-flex justify-content-center">
-            <div class="col-xl-6 col-lg-7 col-md-8 col-9 text-center">
-                <h2>
-                    News and Announcement Posts
-                </h2>
-                <p class="green-text">What's new in UPV-GCS?</p>
-            </div>
-
-                <div class="row">
+	<div class="text-center py-5 mb-4 text-white" style="background-color: rgb(117, 16, 17);">
+      <div class="container" style="background-color: rgb(117, 16, 17);">
+            <h2>
+                News and Announcement Posts
+            </h2>
+            <p class="green-text">What's new in UPV-GCS?</p>
+        </div>
+    </div>
+                <div class="container">
+                <div class="row py-5 mb-4">
                 	<div class="flip-card">
                 		<div class="flip-card-inner">
                 			<div class="flip-card-front">
@@ -114,7 +114,5 @@
                 		</div>
                 	</div>
                 </div>
-            <!-- </div> -->
-        </div>
-    </div>
+                </div>
 {% endblock content %}

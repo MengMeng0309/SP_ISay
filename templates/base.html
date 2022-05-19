@@ -20,15 +20,9 @@
 
 <body>
 <a name="top"></a>
-
-  <div class="header"
-  style="background-color: rgb(202, 240, 248);
-  background-image: url('../static/img/headerIsay.png');
-  background-repeat: no-repeat;
-  background-size: inherit;">
     
-    <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search"
-    style="background-color: rgb(148, 210, 189);">
+    <nav class="navbar navbar-dark navigation-clean-search"
+    style="background-color: rgb(117, 16, 17);">
         <div class="container"><a class="navbar-brand" href="{% url 'home2' %}">iSay</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -50,7 +44,7 @@
                     {% if request.user.is_staff %}
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" href="{% url 'profile' %}">
-                                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Profile
+                                Profile
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -65,7 +59,7 @@
                     {% elif user.is_authenticated %}
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" href="{% url 'profile' %}">
-                            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Profile
+                            Profile
                             </a>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -113,7 +107,6 @@
     {% endif %}
    
    {% block cta %}{% endblock cta %}
-    </div>
 
 {% block content %}{% endblock content %}
 
@@ -123,7 +116,7 @@
         {% block script %}{% endblock script %}
   </script>
 
-    <div class="footer" id = "container" style="display: flex; justify-content: center; text-align: center; padding: 5px; background-color: rgb(148, 210, 189);"><p>iSay: UPV-GCS Unofficial Website<br>CMSC 198 Series: Special Problem<br>&copy; 2022<br><br><a href="#top">Back to top of page</a></p>
+    <div class="footer" id = "container" style="display: flex; justify-content: center; text-align: center; padding: 5px; background-color: rgb(117, 16, 17); color: whitesmoke;"><p>iSay: UPV-GCS Unofficial Website<br>CMSC 198 Series: Special Problem<br>&copy; 2022<br><br><a href="#top">Back to top of page</a></p>
     </div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

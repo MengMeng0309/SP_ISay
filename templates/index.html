@@ -9,7 +9,7 @@
     padding: 20px 20px 20px 20px;
     margin: 10px;
     border-radius: 25px;
-    border: 5px solid lightcoral;
+    border: 5px solid rgb(117, 16, 17);
     box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
     background-color: rgb(248, 237, 235);
     position: inherit;
@@ -21,13 +21,13 @@
     height: 200px;
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid rgb(148, 210, 189);
-    border-radius: 50%
+    border: 3px solid rgb(0, 97, 0);
+    border-radius: 50%;
   }
 
   .card-services {
     height: 310px;
-    border: 3px solid lightcoral;
+    border: 3px solid rgb(117, 16, 17);
     border-radius: 20px;
     box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
     position: inherit;
@@ -38,8 +38,8 @@
     height: 200px;
     margin-left: auto;
     margin-right: auto;
-    border: 3px solid rgb(148, 210, 189);
-    border-radius: 15px
+    border: 3px solid rgb(117, 16, 17);
+    border-radius: 15px;
   }
 
   .flip-card {
@@ -83,40 +83,44 @@
 
 /* Style the back side */
 .flip-card-back {
-  border: 3px solid lightcoral;
+  border: 3px solid rgb(117, 16, 17);
   background-color: rgb(248, 237, 235);
   transform: rotateY(180deg);
 }
 
 {% endblock style %}
 {% block cta %}
-<div class="container hero">
+<div class="header"
+  style="background-color: rgb(202, 240, 248);
+  background-image: url('../static/img/headerIsay.png');
+  background-size: auto;">
+<div class="container">
   <div class="row">
       <div class="col-10 col-lg-5 col-xl-6">
-          <h1 style="color: black;"><br>Mental health is important in our UPV community.</h1>
+          <h1 style="color: black;"><br><br><br><br><br><br><br>Mental health is important in our UPV community.</h1>
           <p style="color: black;">With our knowledge, we lend you a helping hand.</p>
               {% if request.user.is_staff %}
-              <a href="{% url 'manage' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Manage Appointments</a> &#9;
+              <a href="{% url 'manage' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Manage Appointments</a> &#9;
               {% elif user.is_authenticated %}
-              <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a> &#9;
+              <a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a> &#9;
               {%else%}
-              <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a> &#9;
-              <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Log In/Sign Up</a>
+              <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a> &#9;
+              <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Log In/Sign Up</a>
               {%endif%}
       </div>
-
   </div>
+</div>
 </div>
 
 
 {% endblock cta %}
 
 {% block content %}
-<section style="margin-block:50px;" id="team">
-    <div class="text-center py-5 mb-4" style="background-color: rgb(148, 210, 189);">
-        <div class="container" style="background-color: rgb(148, 210, 189);">
+<section id="team">
+    <div class="text-center py-5 mb-4" style="background-color: rgb(117, 16, 17);">
+        <div class="container" style="background-color: rgb(117, 16, 17);">
             <h1 class="fw-light text-white">UPV-GCS Team</h1>
-            <p class="intro">Get to know your designated guidance counselors and how they might lend you a hand.
+            <p class="intro text-white">Get to know your designated guidance counselors and how they might lend you a hand.
             </p>
         </div>
     </div>
@@ -151,7 +155,7 @@
           <span class="small text-uppercase text-muted text-center">Junior High (UPHSI), CAS: PH, ComSci, CMS, Psych, & Socio</span>
         </div>
         
-        <p style="margin-left: auto; margin-right: auto;"><a href="{% url 'team' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">See more >></a></p>
+        <p style="margin-left: auto; margin-right: auto;"><a href="{% url 'team' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">See more >></a></p>
       </div>
     </div>
 </section><!-- End -->
@@ -159,10 +163,10 @@
 
 
 <section id="services" style="margin-block:50px;">
-  <div class="text-center py-5 mb-4" style="background-color: rgb(148, 210, 189);">
-      <div class="container" style="background-color: rgb(148, 210, 189);">
+  <div class="text-center py-5 mb-4" style="background-color: rgb(117, 16, 17);">
+      <div class="container" style="background-color: rgb(117, 16, 17);">
         <h1 class="fw-light text-white">Services</h1>
-        <p class="overview">We provide counseling, psychological testing, career guidance, graduate placement and follow up, human development services, and peer facilitating program to the UPV Community.</p>
+        <p class="overview text-white">We provide counseling, psychological testing, career guidance, graduate placement and follow up, human development services, and peer facilitating program to the UPV Community.</p>
       </div>
     </div>
   <div class="container">
@@ -204,18 +208,22 @@
         </div>
       </div>
       
-      <p style="margin: auto;"><a href="{% url 'services' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Click to Show Info >></a></p>
+      <p style="margin: auto;"><a href="{% url 'services' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Click to Show Info >></a></p>
     </div>
-    <!-- /.row -->
   
   </div>
 </section>
 
-<section class="text-center container" style="margin-block:200px;" id="reviews">
-    <h2>News and Announcement Posts</h2>
-
+<section id="reviews"style="margin-block:50px;">
+    <div class="text-center py-5 mb-4 text-white" style="background-color: rgb(117, 16, 17);">
+      <div class="container" style="background-color: rgb(117, 16, 17);">
+        <h2>News and Announcement Posts</h2>
+      </div>
+    </div>
+    <div class="container">
     <div class="row">
-    <div class="flip-card">
+      
+      <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="{% static '/img/peerHere.jpg' %}" alt="" style="width:300px;height:300px;">
@@ -226,9 +234,9 @@
           <span>To begin with, we have Ms. Teresa S. Hortillo, RGC. She will be talking about the “Basics and Importance of Peer Support".<br>We have Dr. Johnrev B. Guilaran. With his expertise, he will be speaking about “Providing and Maintaining Peer Support during the Pandemic".</span><br><span>Organized by Office of the Student Affairs (OSA)</span>
         </div>
       </div>
-    </div>
+      </div>
 
-    <div class="flip-card">
+      <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
           <img src="{% static '/img/ctAnnounce.png' %}" alt="" style="width:300px;height:300px;">
@@ -256,9 +264,9 @@
       </div>
       </div>
 
-      <p style="margin: auto;"><br><br><br><br><br><a href="{% url 'news' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">See more >></a></p>
+    <p style="margin: auto;"><br><br><br><br><br><a href="{% url 'news' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">See more >></a></p>
     </div>
-
+    </div>
 </section>
 
 
@@ -268,7 +276,7 @@
             
             <div class="col-sm-6">
             <div class="contact-detail-box">
-              <i class="fa fa-map-marker fa-3x text-colored" style="color: rgb(148, 210, 189)"></i>
+              <i class="fa fa-map-marker fa-3x text-colored" style="color: rgb(117, 16, 17)"></i>
               <h4>Our Location</h4>
   
               <address>
@@ -280,7 +288,7 @@
 
             <div class="col-sm-6">
             <div class="contact-detail-box">
-              <i class="far fa-envelope text-colored fa-3x" style="color: rgb(148, 210, 189)"></i>
+              <i class="far fa-envelope text-colored fa-3x" style="color: rgb(117, 16, 17)"></i>
               <h4>Get In Touch</h4>
               <title="Phone">Phone: (123) 456-7890<br>
               Email: <a href="mailto:osa@upv.edu.ph" class="text-muted">osa@upv.edu.ph</a><br>
@@ -324,7 +332,7 @@
               </div> <!-- /col -->
   
               <div class="row">            
-                  <button type="submit" class="btn btn-primary btn-shadow btn-rounded w-md" id="send">Send</button>
+                  <button type="submit" class="btn btn-shadow btn-rounded w-md" id="send" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Send</button>
                 </div> <!-- /col -->
               </div> <!-- /row -->
   
