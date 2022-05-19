@@ -3,7 +3,7 @@
 
 .card {
   padding: 30px 40px;
-  margin: 0 auto;
+  margin:250px;
   margin-top: 60px;
   margin-bottom: 60px;
   border: none !important;
@@ -63,12 +63,15 @@ button:focus {
 
 {% block content %}
 
-<div class="container px-1 py-5 mx-auto">
-  <div class="row d-flex justify-content-center">
-    <div class="col-xl-6 col-lg-7 col-md-8 col-9 text-center">
+<div class="text-center py-5 mb-4 text-white" style="background-color: rgb(117, 16, 17);">
+      <div class="container" style="background-color: rgb(117, 16, 17);">
       <h2>
         Modify Profile Info
       </h2>
+    </div>
+</div>
+
+    <div class="container px-1 py-5 mx-auto">
       <div class="card" style ="">
 
         {% if user_form.errors %}
@@ -96,21 +99,21 @@ button:focus {
                 {{ user_form.email }}<br>
               </div>
               <div class="form-group justify-content-center">
-                <a href="{% url 'password_change' %}" type="button" class="btn btn-warning btn-lg action-button" style="color: black; margin-right: auto; margin-left: auto;">Change Password</a><br><br>
+                <a href="{% url 'password_change' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17); margin-right: auto; margin-left: auto;">Change Password</a><br><br>
                 <label class="small mb-1">Change Avatar:</label>
                 {{ profile_form.avatar }}
               </div>
               <label class="small mb-1">Bio:</label>
               {{ profile_form.bio }}
-              <br><button type="submit" class="btn btn-primary btn-lg">Save Changes</button>
-              <button type="reset" class="btn btn-dark btn-lg">Reset</button><br><br>
+              <br><button type="submit" class="btn btn-lg" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Save Changes</button>
+              <button type="reset" class="btn btn-dark btn-lg" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Reset</button>
+              <br><br>
+              <a href="{% url 'profile' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17); margin-right: auto; margin-left: auto;">Cancel</a>
             </div>
           </div>
         </form>
 
       </div>
     </div>
-  </div>
-</div>
 
 {% endblock content %}

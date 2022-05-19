@@ -55,7 +55,9 @@
           <div class="card-body text-center">
             <h5 class="card-title mb-0">Counseling</h5>
             <span><br>Students are guided in making decisions about personal, vocational, and educational concerns with the help of a professional counselor. Counseling sessions are done with individual students or group. Students are accommodated either as scheduled, walk-in, or through remote platforms.<br><br>In order to make the OSA services more accessible to the students, the Guidance Services Specialists have been deployed for each college/school. The Guidance and Counseling Office has been established in each college/school.</span><br>
-            {% if user.is_authenticated %}
+            {% if request.user.is_staff %}
+            <br><br><a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a>
+            {% elif user.is_authenticated %}
             <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="margin: 5px; color: whitesmoke; background-color: rgb(117, 16, 17);">Inquire</a>
             <a href="{% url 'team' %}" type="button" class="btn btn-lg action-button" style="margin: 5px; color: whitesmoke; background-color: rgb(117, 16, 17);">Our Team</a>
             <a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a>
@@ -72,8 +74,10 @@
           <div class="card-body text-center">
             <h5 class="card-title mb-0">Psychological Testing</h5>
             <span><br>Data on the personal attributes of students like mental abilities, aptitudes, interests, and other personality characteristics are taken through batteries of psychological tests given during the students' first year or as needed during their residency in the University.<br><br>Psychological test results are also used as tools in the counseling process.</span><br>
-            {% if user.is_authenticated %}
-            <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="margin: 5px; color: whitesmoke; background-color: rgb(117, 16, 17);">Inquire</a>
+            {% if request.user.is_staff %}
+            <br><br><a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a>
+            {% elif user.is_authenticated %}
+            <br><br><a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="margin: 5px; color: whitesmoke; background-color: rgb(117, 16, 17);">Inquire</a>
             <a href="{% url 'team' %}" type="button" class="btn btn-lg action-button" style="margin: 5px; color: whitesmoke; background-color: rgb(117, 16, 17);">Our Team</a>
             <a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a>
             {% else %}
@@ -89,7 +93,9 @@
           <div class="card-body text-center">
             <h5 class="card-title mb-0">Career Guidance, Graduate Placement and Follow-up</h5>
             <span><br>As soon as a first-year/undergraduate student enters the University, he/she is guided in identifying and developing career choices through initial interviews either as scheduled, walk-in, or through remote platforms. Career aptitudes and interests are discussed with professional Guidance Services Specialists, taking into consideration their psychological test results. These are followed up in subsequent counselling sessions. When they graduate, students are informed of job placement opportunities and followed up as to their career prospects. Exit interviews are requested for all students before they leave the University.</span><br>
-            {% if user.is_authenticated %}
+            {% if request.user.is_staff %}
+            <br><br><a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a>
+            {% elif user.is_authenticated %}
             <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="margin: 5px; color: whitesmoke; background-color: rgb(117, 16, 17);">Inquire</a>
             <a href="{% url 'team' %}" type="button" class="btn btn-lg action-button" style="margin: 5px; color: whitesmoke; background-color: rgb(117, 16, 17);">Our Team</a>
             <a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a>
@@ -105,7 +111,9 @@
           <div class="card-body text-center">
             <h5 class="card-title mb-0">Human Development Services</h5>
             <span><br>Various groups of students are brought together in group dynamics activities and structured learning experiences where they learn to become aware of, responsive to, and effective in handling personal and interpersonal relationships. Experiences gleaned from these activities contribute to their growth and deveopment as human beings. The Personal Effectiveness Program (PEP), a 16-hr session conducted every first semester for first year students, is one of the human development services facilitated by the Guidance Services Specialists of OSA. For AY 2020 - 2021, PEP will be done through remote platforms.</span><br>
-            {% if user.is_authenticated %}
+            {% if request.user.is_staff %}
+            <br><br><a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a>
+            {% elif user.is_authenticated %}
             <a href="{% url 'login' %}" type="button" class="btn btn-lg action-button" style="margin: 5px; color: whitesmoke; background-color: rgb(117, 16, 17);">Inquire</a>
             <a href="{% url 'team' %}" type="button" class="btn btn-lg action-button" style="margin: 5px; color: whitesmoke; background-color: rgb(117, 16, 17);">Our Team</a>
             <a href="{% url 'appointment' %}" type="button" class="btn btn-lg action-button" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Book an appointment</a>
@@ -115,6 +123,7 @@
           </div>
         </div>
       </div>
+      {% if not request.user.is_staff %}
       <div class="column mx-auto">
         <div class="card-services">
           <img src="{% static '/img/counseling.jpg' %}" class="card-services-img" alt="...">
@@ -131,6 +140,7 @@
           </div>
         </div>
       </div>
+      {% endif %}
     </div>
     </div>
 

@@ -3,15 +3,11 @@
 
     .card {
     padding: 30px 40px;
-    margin-top: 60px;
-    margin-bottom: 60px;
+    margin: auto;
         border: none !important;
         box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
     }
 
-    .blue-text {
-        color: #00BCD4
-    }
 
     .form-control-label {
         margin-bottom: 0
@@ -63,14 +59,14 @@
 {% block content %}
 
 
-    <div class="container px-1 py-5 mx-auto">
-        <div class="row d-flex justify-content-center">
-            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
-                <h3>
-                    Book an appointment
-                </h3>
-                <p class="blue-text">Use the following form to contact us and request an appointment..</p>
-                <div class="card">
+    <div class="text-center py-5 mb-4 text-white" style="background-color: rgb(117, 16, 17);">
+      <div class="container" style="background-color: rgb(117, 16, 17);">
+        <h3>Book an appointment</h3>
+        <p class="text-white">Use the following form to contact us and request an appointment.</p>
+      </div>
+     </div>
+     <div class="container px-1 py-5 mx-auto">
+        <div class="card">
                     
                     <form class="form-card" method="POST" action= "{% url 'appointment' %}">
                     {% csrf_token %}   
@@ -117,13 +113,12 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Send</button> </div>
+                            <div class="form-group col-sm-6"> <button type="submit" class="btn-block" style="color: whitesmoke; background-color: rgb(117, 16, 17);">SEND</button></div>
                         </div>
+                         <a href="{% url 'home' %}" class="btn active" style="position:  relative; right: -490px; color: whitesmoke; background-color: rgb(117, 16, 17);" role="button" aria-pressed="true">Cancel</a> 
                     </form>
-                </div>
-            </div>
         </div>
-    </div>
+     </div>
 
 {% endblock content %}
 

@@ -63,15 +63,18 @@
 
 {% block content %}
 
-    <div class="container px-1 py-5 mx-auto">
-        <div class="row d-flex justify-content-center">
-            <div class="col-xl-6 col-lg-7 col-md-8 col-9 text-center">
-                <h2>
-                    Login to your iSay account
-                </h2>
-                <p class="green-text">Use the following form to login to iSay.</p>
-                <div class="card" style = "width: 25rem;">
-                {% if form.errors %}
+<div class="text-center py-5 mb-4 text-white" style="background-color: rgb(117, 16, 17);">
+    <div class="container" style="background-color: rgb(117, 16, 17);">
+        <h2>Login to your iSay account</h2>
+        <p class="text-white">Use the following form to login to iSay.</p>
+    </div>
+</div>
+
+<div class="container mx-auto">
+    <div class="row d-flex justify-content-center">
+        <div class="col-xl-6 col-lg-7 col-md-8 col-9 text-center">
+            <div class="card" style = "width: 25rem;">
+            {% if form.errors %}
                     <div class="alert alert-danger alert-dismissible" role="alert">
                         <div id="form_errors">
                             {% for key, value in form.errors.items %}
@@ -82,44 +85,52 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                {% endif %}
+            {% endif %}
                     
-                    <form class="form-card" method="POST" action= "{% url 'login' %}">
-                    {% csrf_token %}   
+            <form class="form-card" method="POST" action= "{% url 'login' %}">
+            {% csrf_token %}   
 
-                      <div class="form-group col-auto"> 
-                        <label class="form-control-label px-3">Username<span class="text-danger"> *</span></label> 
-                        {{ form.username }}
-                      </div>
-                      <div class="form-group col-auto"> 
-                        <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> 
-                        {{ form.password }}
-                      </div>
-                      <div class="form-row">
-                        <div class="col-md-10 offset-md-1">
-                            <div class="form-group">
-                                <!-- Add a Remember me functionality -->
-                                {{ form.remember_me }}
-                                <label> Remember me</label>
-                            </div>
-                        </div>
-                    </div>
-                      <div class="row justify-content-center">
-                        <div>
-                        <button name="login" class="btn active" id="login" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Sign in</button>
-                        <a href="{% url 'home' %}" class="btn active" style="color: whitesmoke; background-color: rgb(117, 16, 17);" role="button" aria-pressed="true">Cancel Login</a></div>
-                      </div>
-                      <div class="row justify-content-center">
-                        <div><a href="{% url 'password_reset' %}" class="btn active green-text" role="button" aria-pressed="true">Forgot Password?</a></div>
-                      </div>
-                    </form>
+                    
+            <div class="form-group col-auto"> 
+                <label class="form-control-label px-3">Username<span class="text-danger"> *</span></label> 
+                {{ form.username }}
+            </div>
+                    
+            <div class="form-group col-auto"> 
+                <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> 
+                {{ form.password }}
+            </div>
+                    
+            <div class="form-row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="form-group">
+                    <!-- Add a Remember me functionality -->
+                        {{ form.remember_me }}
+                        <label> Remember me</label>
+                     </div>
                 </div>
+                    
                 <div class="row justify-content-center mx-auto">
-                    <p>Don't have an account yet?&nbsp;<a href="{% url 'signup' %}" class="btn active" style="color: whitesmoke; background-color: rgb(117, 16, 17);" role="button" aria-pressed="true">Sign Up</a></p>
+                    <div>
+                    <button name="login" class="btn active" id="login" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Login</button>
+                    <a href="{% url 'home' %}" class="btn active" style="color: whitesmoke; background-color: rgb(117, 16, 17);" role="button" aria-pressed="true">Cancel Login</a>
                 </div>
+                </div>
+
+                <div class="row justify-content-center mx-auto">
+                    <div><br><br><a href="{% url 'password_reset' %}" class="btn active" role="button" aria-pressed="true" style="color: whitesmoke; background-color: rgb(117, 16, 17);">Forgot Password?</a></div>
+                </div>
+            </div>
+
+            </form>
+
+            </div>
+            <div class="row justify-content-center mx-auto">
+                <p>Don't have an account yet?&nbsp;<a href="{% url 'signup' %}" class="btn active" style="color: whitesmoke; background-color: rgb(117, 16, 17);" role="button" aria-pressed="true">Sign Up</a></p>
             </div>
         </div>
     </div>
+</div>
 
 {% endblock content %}
 
