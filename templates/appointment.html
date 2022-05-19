@@ -62,16 +62,6 @@
 
 {% block content %}
 
-    {% if messages %}
-    <div class="card notification-card notification-invitation">
-        <div class="card-body">
-        {% for message in messages %}
-                <div class="card-title">{{message}} </div>
-            {% endfor %}
-        </div>
-      </div>
-
-    {% endif %}
 
     <div class="container px-1 py-5 mx-auto">
         <div class="row d-flex justify-content-center">
@@ -114,6 +104,10 @@
                         </div>
 
                         <div class="row justify-content-between text-left">
+                            <div class="form-group col-12 flex-column d-flex"> 
+                                <label class="form-control-label px-3">Your request<span class="text-danger"> *</span></label> 
+                                <textarea type="text" id="ans" name="request" placeholder="" onblur="validate(6)"></textarea> 
+                            </div>
                             <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label px-3">Preferred Date of Appointment<span class="text-danger"> *</span></label>
                                 <input type="date" name="date" class="form-control-label px-3" 

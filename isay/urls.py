@@ -1,5 +1,7 @@
 from django.urls import path, include
-from .views import HomeTemplateView, Home2TemplateView, TeamTemplateView, ServicesTemplateView, NewsTemplateView, AppointmentTemplateView, ManageAppointmentTemplateView, LoginTemplateView, SignupTemplateView, profile, ModifyProfileTemplateView
+from django.contrib.auth import views as auth_views
+from .views import HomeTemplateView, Home2TemplateView, TeamTemplateView, ServicesTemplateView, NewsTemplateView, AppointmentTemplateView, ManageAppointmentTemplateView, LoginTemplateView, SignupTemplateView, profile, ModifyProfileTemplateView, ResetPasswordView
+
 
 urlpatterns = [
     path("", HomeTemplateView.as_view(), name="home"),
@@ -12,4 +14,10 @@ urlpatterns = [
     path('signup/', SignupTemplateView.as_view(), name='signup'),
     path('profile/',profile, name ="profile"),
     path('modify_profile/',ModifyProfileTemplateView.as_view(), name ="modify_profile"),
+    path('password-reset/', ResetPasswordView.as_view(), name='password_reset'),
+    path('password-reset-confirm/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'),
+         name='password_reset_confirm'),
+    path('password-reset-complete/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'),
+         name='password_reset_complete'),
 ]

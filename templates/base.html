@@ -22,11 +22,15 @@
 <a name="top"></a>
 
   <div class="header"
-  style="background-color: rgb(202, 240, 248);
+  style="background-color: rgb(247, 238, 233);
   background-image: url('../static/img/headerIsay.png');
   background-repeat: no-repeat;
-  background-size: inherit;">
-    
+  background-size: inherit;
+  {% if "appointment" in request.path %}
+  background-image: url('../static/img/helpingHand.jpg');
+  max-height: 100px; min-height: 100px;
+  {%endif%} 
+  ">
     <nav class="navbar navbar-dark navbar-expand-md navigation-clean-search"
     style="background-color: rgb(148, 210, 189);">
         <div class="container"><a class="navbar-brand" href="{% url 'home2' %}">iSay</a>
@@ -52,9 +56,6 @@
                             <a class="nav-link active" href="{% url 'profile' %}">
                                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Profile
                             </a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" href="{% url 'manage' %}">Manage</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" href="{% url 'team' %}">Messages</a>

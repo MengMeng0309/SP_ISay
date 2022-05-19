@@ -49,44 +49,44 @@
   border: 1px solid #f1f1f1;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
   margin: 40px;
-}
+  }
 
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
 
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
 
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
 
-/* Style the back side */
-.flip-card-back {
-  border: 3px solid lightcoral;
-  background-color: rgb(248, 237, 235);
-  transform: rotateY(180deg);
-}
+  /* Style the back side */
+  .flip-card-back {
+    border: 3px solid lightcoral;
+    background-color: rgb(248, 237, 235);
+    transform: rotateY(180deg);
+  }
 
 {% endblock style %}
 {% block cta %}
@@ -100,7 +100,6 @@
               {% elif user.is_authenticated %}
               <a href="{% url 'appointment' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a> &#9;
               {%else%}
-              <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Book an appointment</a> &#9;
               <a href="{% url 'login' %}" type="button" class="btn btn-primary btn-lg action-button" style="color: black;">Log In/Sign Up</a>
               {%endif%}
       </div>
@@ -306,19 +305,19 @@
             {% csrf_token %}
               <div class="form-group">
                 <label for="name2">Name</label>
-                <input class="form-control" id="name2" name="name" type="text" placeholder="name">
+                <input class="form-control" id="name2" name="name" type="text" placeholder="Name">
                 <div class="error" id="err-name" style="display: none;">Please enter name</div>
               </div> <!-- /Form-name -->
   
               <div class="form-group">
                 <label for="email2">Email</label>
-                <input class="form-control" id="email2" name="email" type="text" placeholder="email">
+                <input class="form-control" id="email2" name="email" type="text" placeholder="Email">
                 <div class="error" id="err-emailvld" style="display: none;">E-mail is not a valid format</div> 
               </div> <!-- /Form-email -->
   
               <div class="form-group">
                 <label for="message2">Message</label>
-                <textarea class="form-control" id="message2" name="message" rows="5" placeholder="message">Message</textarea>
+                <textarea class="form-control" id="message2" name="message" rows="5" placeholder="Message"></textarea>
   
                 <div class="error" id="err-message" style="display: none;">Please enter message</div>
               </div> <!-- /col -->
