@@ -95,15 +95,15 @@ class AppointmentTemplateView(TemplateView):
     template_name = "appointment.html"
 
     def post(self, request):
-        fname = request.POST.get("fname")
-        lname = request.POST.get("lname")
-        email = request.POST.get("email")
+        fname = request.POST.get("fname") # will omit later
+        lname = request.POST.get("lname") # will omit later
+        email = request.POST.get("email") # will omit later
         mobile = request.POST.get("mobile")
         message = request.POST.get("request")
         # services = request.POST.get("services")
 
         appointment = Appointment.objects.create(
-            first_name=fname,
+            first_name=fname, # will carry the firstname from registration form get.cleaned_data ata idk bitch
             last_name=lname,
             email=email,
             phone=mobile,
@@ -175,22 +175,7 @@ class LoginTemplateView(LoginView):
         return super(LoginTemplateView, self).form_valid(form)
 
 
-@login_required
-def profile(request):
-    if request.method == 'POST':
-        user_form = UpdateUserForm(request.POST, instance=request.user)
-        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            messages.success(request, 'Your profile is updated successfully')
-            return redirect(to='profile')
-    else:
-        user_form = UpdateUserForm(instance=request.user)
-        profile_form = UpdateProfileForm(instance=request.user.profile)
-
-    return render(request, 'profile.html', {'user_form': user_form, 'profile_form': profile_form})
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
@@ -208,22 +193,38 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('home')
 
-class ModifyProfileTemplateView(TemplateView):
-    template_name = "modify_profile.html"
+#PROFILE PAGE
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
 
-# @login_required
-# def modify_profile(request):
-#     if request.method == 'POST':
-#         user_form = UpdateUserForm(request.POST, instance=request.user)
-#         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='profile')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
 
-#         if user_form.is_valid() and profile_form.is_valid():
-#             user_form.save()
-#             profile_form.save()
-#             messages.success(request, 'Your profile is updated successfully')
-#             return redirect(to='modify_profile')
-#     else:
-#         user_form = UpdateUserForm(instance=request.user)
-#         profile_form = UpdateProfileForm(instance=request.user.profile)
+    return render(request, 'profile.html', {'user_form': user_form, 'profile_form': profile_form})
 
-#     return render(request, 'modify_profile.html', {'user_form': user_form, 'profile_form': profile_form})
+#MODIFY PROFILE
+@login_required
+def modify_profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile is updated successfully')
+            return redirect(to='profile')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
+
+    return render(request, 'modify_profile.html', {'user_form': user_form, 'profile_form': profile_form})

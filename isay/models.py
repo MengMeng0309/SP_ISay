@@ -15,7 +15,7 @@ class Appointment(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
-    # services = models.CharField(max_length=1, choices=SERVICES_CHOICES)
+    # services = models.CharField(max_length=100, choices=SERVICES_CHOICES)
     phone = models.CharField(max_length=50)
     request = models.TextField(blank=True)
     sent_date = models.DateField(auto_now_add=True)
@@ -43,7 +43,7 @@ class Profile(models.Model):
 
         img = Image.open(self.avatar.path)
 
-        if img.height > 100 or img.width > 100:
-            new_img = (100, 100)
+        if img.height > 200 or img.width > 200:
+            new_img = (200, 200)
             img.thumbnail(new_img)
             img.save(self.avatar.path)

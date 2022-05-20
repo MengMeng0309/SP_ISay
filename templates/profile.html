@@ -24,7 +24,9 @@
     </div>
 
     <div class="card">
+      <br/>
       <img class="" src="{{ user.profile.avatar.url }}" style="cursor: pointer;">
+      <br/>
       <h4 style="margin-left: auto; margin-right: auto;">{{user.username}}</h4>
       <h6 style="margin-left: auto; margin-right: auto;">{{user.first_name}} {{user.last_name}}</h6>
       <h6 style="margin-left: auto; margin-right: auto;">{{user.email}}</h6>
@@ -40,7 +42,7 @@
       <a href="{% url 'team' %}" type="button" class="btn btn-lg action-button" style="margin-right: auto; margin-left: auto; color: whitesmoke; background-color: rgb(117, 16, 17);">Message a counselor</a><br>
       {% endif %}
       
-      <a href="{% url 'modify_profile' %}" type="button" class="btn btn-lg action-button" style="margin-right: auto; margin-left: auto; color: whitesmoke; background-color: rgb(117, 16, 17);">Modify Profile Info</a><br>
+      <a href="{% url 'modify_profile' %}" type="button" class="btn btn-lg action-button" style="margin-right: auto; margin-left: auto; color: whitesmoke; background-color: rgb(117, 16, 17);">Settings</a><br>
   </div>
 
 {% endblock content %}

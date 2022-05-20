@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from .views import HomeTemplateView, Home2TemplateView, TeamTemplateView, ServicesTemplateView, NewsTemplateView, AppointmentTemplateView, ManageAppointmentTemplateView, LoginTemplateView, SignupTemplateView, profile, ModifyProfileTemplateView, ResetPasswordView
+from .views import HomeTemplateView, Home2TemplateView, TeamTemplateView, ServicesTemplateView, NewsTemplateView, AppointmentTemplateView, ManageAppointmentTemplateView, LoginTemplateView, SignupTemplateView, profile, modify_profile, ResetPasswordView
 
 
 urlpatterns = [
@@ -13,7 +13,7 @@ urlpatterns = [
     path("manage-appointments/", ManageAppointmentTemplateView.as_view(), name="manage"),
     path('signup/', SignupTemplateView.as_view(), name='signup'),
     path('profile/',profile, name ="profile"),
-    path('modify_profile/',ModifyProfileTemplateView.as_view(), name ="modify_profile"),
+    path('modify_profile/',modify_profile, name ="modify_profile"),
     path('password-reset/', ResetPasswordView.as_view(), name='password_reset'),
     path('password-reset-confirm/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'),
          name='password_reset_confirm'),
