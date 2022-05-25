@@ -348,7 +348,7 @@
             <div class="col-lg-4">
                 <div class="card card-margin">
                     <div class="card-header no-border">
-                        <h5 class="card-title">{{app.first_name}} {{app.last_name}}</h5>
+                        <h4 class="card-title">{{app.first_name}} {{app.last_name}}</h4>
                     </div>
                     <div class="card-body pt-0">
                         <div class="widget-49">
@@ -358,12 +358,14 @@
                                     <span class="widget-49-date-month">{{app.sent_date|date:"M"}}</span>
                                 </div>
                                 <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">{{app.email}}</span>
-                                    <span class="widget-49-meeting-time">{{app.phone}}</span>
+                                    <span class="widget-49-pro-title">Gender: {{app.gender}}</span>
+                                    <span class="widget-49-pro-title">Email: {{app.email}}</span>
+                                    <span class="widget-49-meeting-time">Contact Number: {{app.phone}}</span>
+                                    <span class="widget-49-pro-title"><b>{{app.services}}</b></span>
                                 </div>
                             </div>
                             <div class="widget-49-meeting-points">
-                                <span>{{app.request}}</span>
+                                <span><b>Side Notes:</b><br>{{app.request}}</span>
                             </div>
                             <hr class="w-100">
                             {% if app.accepted == False %}
@@ -377,6 +379,8 @@
                                 <input class="btn-block form-control" type="submit" value="Accept" style="color: whitesmoke; background-color: rgb(117, 16, 17);">
                             </div>
                             </form>
+                            {% else %}
+                              <span class="widget-49-meeting-time">Accepted by : {{app.who_accepted_f}} {{app.who_accepted_l}}</span>
                             {% endif %}
                         </div>
                     </div>

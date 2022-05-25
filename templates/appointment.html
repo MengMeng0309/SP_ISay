@@ -72,24 +72,22 @@
                     {% csrf_token %}   
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-sm-6 flex-column d-flex"> 
-                            <label class="form-control-label px-3">First name<span class="text-danger"> *</span>
-                            </label> 
-                            <input required type="text" id="fname" name="fname" placeholder="Enter your first name" onblur="validate(1)"> 
-                        </div>
+                                <label class="form-control-label px-3">First name</label> 
+                                <input required type="text" id="fname" name="fname" value="{{user.first_name}}" onblur="validate(1)" readonly> 
+                            </div>
 
-                        <div class="form-group col-sm-6 flex-column d-flex"> 
-                            <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> 
-                            <input required type="text" id="lname" name="lname" placeholder="Enter your last name" onblur="validate(2)"> 
-                        </div>
+                            <div class="form-group col-sm-6 flex-column d-flex"> 
+                                <label class="form-control-label px-3">Last name</label> 
+                                <input required type="text" id="lname" name="lname" value="{{user.last_name}}" onblur="validate(2)" readonly> 
+                            </div>
 
                         </div>
 
                         <div class="row justify-content-between text-left">
 
                             <div class="form-group col-sm-6 flex-column d-flex"> 
-                                <label class="form-control-label px-3">Email<span class="text-danger"> *</span>
-                                </label> 
-                                <input type="text" id="email" name="email" placeholder="" onblur="validate(3)"> 
+                                <label class="form-control-label px-3">Email</label> 
+                                <input type="text" id="email" name="email" value="{{user.email}}" onblur="validate(3)" readonly> 
                             </div>
 
                             <div class="form-group col-sm-6 flex-column d-flex"> 
@@ -98,11 +96,34 @@
                             </div>
 
                         </div>
+                        <div class="row justify-content-between text-left">
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3" style = " padding-bottom: 5px;">Select Gender<span class="text-danger"> *</span></label>  
+                                <select class="form-control px-2" name="gender" id="gen" onblur="validate(5)">
+                                    <option value="" disabled selected>Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3" style = " padding-bottom: 5px;">Select Service<span class="text-danger"> *</span></label> 
+                                <select class="form-control px-2"  name="services" id="ser" onblur="validate(6)">
+                                    <option value="" disabled selected>Services Offered</option>
+                                    <option value="Counseling">Counseling</option>
+                                    <option value="Psychological Testing">Psychological Testing</option>
+                                    <option value="Career Guidance, Graduate Placement and Follow-up">Career Guidance, Graduate Placement and Follow-up</option>
+                                    <option value="Human Development Services">Human Development Services</option>
+                                    <option value="Peer Facilitating Program">Peer Facilitating Program</option>
+                                </select>
+                            </div>
+                        </div>
+
 
                         <div class="row justify-content-between text-left">
                             <div class="form-group col-12 flex-column d-flex"> 
-                                <label class="form-control-label px-3">Your request<span class="text-danger"> *</span></label> 
-                                <textarea type="text" id="ans" name="request" placeholder="" onblur="validate(6)"></textarea> 
+                                <label class="form-control-label px-3">Side Notes<span class="text-danger"> *</span></label> 
+                                <textarea type="text" id="ans" name="request" placeholder="" onblur="validate(7)"></textarea> 
                             </div>
                             <div class="form-group col-sm-6 flex-column d-flex">
                                 <label class="form-control-label px-3">Preferred Date of Appointment<span class="text-danger"> *</span></label>
@@ -129,8 +150,9 @@
     v2 = document.getElementById("lname");
     v3 = document.getElementById("email");
     v4 = document.getElementById("mob");
-    v5 = document.getElementById("job");
-    v6 = document.getElementById("ans");
+    v5 = document.getElementById("gen");
+    v6 = document.getElementById("ser");
+    v7 = document.getElementById("ans");
 
     flag1 = true;
     flag2 = true;
@@ -138,6 +160,7 @@
     flag4 = true;
     flag5 = true;
     flag6 = true;
+    flag7 = true;
 
     if(val>=1 || val==0) {
     if(v1.value == "") {
@@ -200,8 +223,18 @@
     flag6 = true;
     }
     }
+    if(val>=7 || val==0) {
+    if(v7.value == "") {
+    v7.style.borderColor = "red";
+    flag7 = false;
+    }
+    else {
+    v7.style.borderColor = "green";
+    flag7 = true;
+    }
+    }
 
-    flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6;
+    flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7;
 
     return flag;
     }

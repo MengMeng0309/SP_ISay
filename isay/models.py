@@ -3,23 +3,33 @@ from django.http import request
 from django.contrib.auth.models import User
 from PIL import Image
 
+
 class Appointment(models.Model):
-    # SERVICES_CHOICES = (
-    #     ('C', 'Counseling'),
-    #     ('T', 'Psychological Testing'),
-    #     ('F', 'Career Guidance, Graduate Placement and Follow-up'),
-    #     ('H', 'Human Development Services'),
-    #     ('P', 'Peer Facilitating Program'),
-    # )
+    SERVICES_CHOICES = (
+        ('Counseling', 'Counseling'),
+        ('Psychological Testing', 'Psychological Testing'),
+        ('Career Guidance, Graduate Placement and Follow-up', 'Career Guidance, Graduate Placement and Follow-up'),
+        ('Human Development Services', 'Human Development Services'),
+        ('Peer Facilitating Program', 'Peer Facilitating Program'),
+    )
+
+    GENDER = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other'),
+    )
 
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
-    # services = models.CharField(max_length=100, choices=SERVICES_CHOICES)
-    phone = models.CharField(max_length=50)
+    services = models.CharField(max_length=100,choices=SERVICES_CHOICES)
+    gender = models.CharField(max_length=100,choices=GENDER)
+    phone = models.CharField(max_length=12)
     request = models.TextField(blank=True)
     sent_date = models.DateField(auto_now_add=True)
     accepted = models.BooleanField(default=False)
+    who_accepted_f = models.CharField(max_length=50, blank= True)
+    who_accepted_l = models.CharField(max_length=50, blank= True)
     accepted_date = models.DateField(auto_now_add=False, null=True, blank=True)
 
     def __str__(self):
@@ -47,3 +57,4 @@ class Profile(models.Model):
             new_img = (200, 200)
             img.thumbnail(new_img)
             img.save(self.avatar.path)
+

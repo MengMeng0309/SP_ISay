@@ -16,6 +16,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config("SK")
 
+RECAPTCHA_PUBLIC_KEY = '6Le1MRAgAAAAAAcdCie8dbfpYibPR3ozCwlZV5Sy'
+RECAPTCHA_PRIVATE_KEY = '6Le1MRAgAAAAAPcM_onnez52neSoSnH2BP4l9Qux'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -32,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'isay',
+    'captcha',
 ]
 
 MIDDLEWARE = [

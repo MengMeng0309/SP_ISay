@@ -1,4 +1,6 @@
 import datetime
+import json
+import requests
 from email.message import Message
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render,redirect
@@ -16,21 +18,15 @@ from django.views.generic import ListView
 from django.template import Context
 from django.template.loader import render_to_string, get_template
 
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User
-from django.contrib.auth.tokens import default_token_generator
-from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+
 
 from .forms import RegisterForm,LoginForm,UpdateUserForm, UpdateProfileForm
-from .models import Appointment
-# from .token import account_activation_token
-# UserModel = get_user_model()
+from .models import Appointment,User
 
 
 class HomeTemplateView(TemplateView):
     template_name = "index.html"
+    model = User
 
     def post(self, request):
         name = request.POST.get("name")
@@ -73,10 +69,20 @@ class SignupTemplateView(TemplateView):
         form = self.form_class(request.POST)
 
         if form.is_valid():
-            form.save()
+            recaptcha_response = request.POST.get("g-recaptcha-response")
+            check_url = "https://www.google.com/recaptcha/api/siteverify"
+            secret = settings.RECAPTCHA_PRIVATE_KEY
+            check_data = {"secret":secret, "response": recaptcha_response}
+            check_response = requests.post(url = check_url, data = check_data)
+            check_json = json.loads(check_response.text)
 
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}')
+            if check_json['success'] == True:
+
+                form.save()
+                username = form.cleaned_data.get('username')
+                messages.success(request, f'Account created for {username}')
+            else:
+                messages.error(request, 'Invalid Captcha, Please try again')
 
             return redirect(to='/')
 
@@ -93,22 +99,26 @@ class NewsTemplateView(TemplateView):
 
 class AppointmentTemplateView(TemplateView):
     template_name = "appointment.html"
-
     def post(self, request):
-        fname = request.POST.get("fname") # will omit later
-        lname = request.POST.get("lname") # will omit later
-        email = request.POST.get("email") # will omit later
+        fname = request.user.first_name 
+        lname = request.user.last_name 
+        email = request.user.email 
         mobile = request.POST.get("mobile")
+        gender = request.POST.get("gender")
+        services = request.POST.get("services")
         message = request.POST.get("request")
-        # services = request.POST.get("services")
+        
 
         appointment = Appointment.objects.create(
-            first_name=fname, # will carry the firstname from registration form get.cleaned_data ata idk bitch
+            first_name=fname, # will carry the firstname from registration form 
             last_name=lname,
             email=email,
             phone=mobile,
+            gender=gender,
+            services=services,
             request=message,
-            # services=services,
+
+           
         )
 
         appointment.save()
@@ -126,13 +136,19 @@ class ManageAppointmentTemplateView(ListView):
     def post(self, request):
         date = request.POST.get("date")
         appointment_id = request.POST.get("appointment-id")
+        who_accepted_f = request.user.first_name
+        who_accepted_l = request.user.last_name
         appointment = Appointment.objects.get(id = appointment_id)
         appointment.accepted = True
+        appointment.who_accepted_f = who_accepted_f
+        appointment.who_accepted_l = who_accepted_l
         appointment.accepted_date = datetime.datetime.now()
         appointment.save()
 
         data = {
             "fname":appointment.first_name,
+            "wfname":appointment.who_accepted_f,
+            "wlname":appointment.who_accepted_l,
             "date":date,
         }
 
@@ -173,9 +189,6 @@ class LoginTemplateView(LoginView):
 
         # else browser session will be as long as the session cookie time "SESSION_COOKIE_AGE" defined in settings.py
         return super(LoginTemplateView, self).form_valid(form)
-
-
-
 
 
 class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
@@ -228,3 +241,4 @@ def modify_profile(request):
         profile_form = UpdateProfileForm(instance=request.user.profile)
 
     return render(request, 'modify_profile.html', {'user_form': user_form, 'profile_form': profile_form})
+    
