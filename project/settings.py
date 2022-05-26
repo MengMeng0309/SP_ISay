@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'isay',
     'captcha',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,8 @@ EMAIL_USE_TLS = True
 
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'

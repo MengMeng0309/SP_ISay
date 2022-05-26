@@ -384,7 +384,39 @@
   .btn-shadow.btn-primary {
     box-shadow: 1px 5px 9px rgba(241, 96, 1, 0.32);
   }
-  
+
+    /*======= Messages ======*/
+
+  .inbox-icon-container {
+    margin-right: 15px;
+  }
+  .inbox-icon {
+    color: #333;
+    transition: 0.5s;
+  }
+  .inbox-icon:hover {
+    transition: 0.5s;
+  }
+  .sent-message {
+    background-color: #a7a7a7;
+    border-radius: 30px;
+    padding: 10px 25px;
+    width: 25%;
+    float: right;
+  }
+  .received-message {
+    background-color: rgb(117, 16, 17);
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 25px;
+    width: 25%;
+    float: left;
+  }
+  .empty-text {
+    color: #777;
+    font-size: 1.5rem;
+    text-align: center;
+  }
   
   
   /*======= Responsive ======*/

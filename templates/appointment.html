@@ -134,9 +134,12 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="form-group col-sm-6"> <button type="submit" class="btn-block" style="color: whitesmoke; background-color: rgb(117, 16, 17);">SEND</button></div>
+                            <div class="form-group col-sm-6"> 
+                                <button type="submit" class="btn-block" style="color: whitesmoke; background-color: rgb(117, 16, 17);">SEND</button>
+                                <a href="{% url 'home' %}" class="btn active" style="color: whitesmoke; background-color: rgb(117, 16, 17);" role="button" aria-pressed="true">Cancel</a> 
+                            </div>
                         </div>
-                         <a href="{% url 'home' %}" class="btn active" style="position:  relative; right: -490px; color: whitesmoke; background-color: rgb(117, 16, 17);" role="button" aria-pressed="true">Cancel</a> 
+                         
                     </form>
         </div>
      </div>

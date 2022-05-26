@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
 from django.core.mail import EmailMessage
+from django.db.models import Q
 from django.conf import settings
 from django.contrib import messages
 from django.views import View
@@ -20,8 +21,8 @@ from django.template.loader import render_to_string, get_template
 
 
 
-from .forms import RegisterForm,LoginForm,UpdateUserForm, UpdateProfileForm
-from .models import Appointment,User
+from .forms import RegisterForm,LoginForm,UpdateUserForm, UpdateProfileForm,ThreadForm,MessageForm
+from .models import Appointment,User,ThreadModel,MessageModel
 
 
 class HomeTemplateView(TemplateView):
@@ -241,4 +242,79 @@ def modify_profile(request):
         profile_form = UpdateProfileForm(instance=request.user.profile)
 
     return render(request, 'modify_profile.html', {'user_form': user_form, 'profile_form': profile_form})
-    
+
+
+class CreateThread(View):
+    def get(self, request, *args, **kwargs):
+        form = ThreadForm()
+
+        context = {
+            'form': form
+        }
+
+        return render(request, 'chat/create_thread.html', context)
+
+    def post(self, request, *args, **kwargs):
+        form = ThreadForm(request.POST)
+
+        username = request.POST.get('username')
+        try:
+            receiver = User.objects.get(username=username)
+            if ThreadModel.objects.filter(user=request.user, receiver=receiver).exists():
+                thread = ThreadModel.objects.filter(user=request.user, receiver=receiver)[0]
+                return redirect('thread', pk=thread.pk)
+            elif ThreadModel.objects.filter(user=receiver, receiver=request.user).exists():
+                thread = ThreadModel.objects.filter(user=receiver, receiver=request.user)[0]
+                return redirect('thread', pk=thread.pk)
+
+            if form.is_valid():
+                thread = ThreadModel(
+                    user=request.user,
+                    receiver=receiver
+                )
+                thread.save()
+
+                return redirect('thread', pk=thread.pk)
+        except:
+            return redirect('create-thread')
+
+class ListThreads(View):
+    def get(self, request, *args, **kwargs):
+        threads = ThreadModel.objects.filter(Q(user=request.user) | Q(receiver=request.user))
+
+        context = {
+            'threads': threads
+        }
+
+        return render(request, 'chat/inbox.html', context)
+
+class CreateMessage(View):
+    def post(self, request, pk, *args, **kwargs):
+        thread = ThreadModel.objects.get(pk=pk)
+        if thread.receiver == request.user:
+            receiver = thread.user
+        else:
+            receiver = thread.receiver
+
+        message = MessageModel(
+            thread=thread,
+            sender_user=request.user,
+            receiver_user=receiver,
+            body=request.POST.get('message')
+        )
+
+        message.save()
+        return redirect('thread', pk=pk)
+
+class ThreadView(View):
+    def get(self, request, pk, *args, **kwargs):
+        form = MessageForm()
+        thread = ThreadModel.objects.get(pk=pk)
+        message_list = MessageModel.objects.filter(thread__pk__contains=pk)
+        context = {
+            'thread': thread,
+            'form': form,
+            'message_list': message_list
+        }
+
+        return render(request, 'chat/thread.html', context)

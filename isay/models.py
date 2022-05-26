@@ -1,5 +1,6 @@
 from django.db import models
 from django.http import request
+from django.utils import timezone
 from django.contrib.auth.models import User
 from PIL import Image
 
@@ -58,3 +59,15 @@ class Profile(models.Model):
             img.thumbnail(new_img)
             img.save(self.avatar.path)
 
+class ThreadModel(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    has_unread = models.BooleanField(default=False)
+
+class MessageModel(models.Model):
+    thread = models.ForeignKey('ThreadModel', related_name='+', on_delete=models.CASCADE, blank=True, null=True)
+    sender_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    receiver_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
+    body = models.CharField(max_length=1000)
+    date = models.DateTimeField(default=timezone.now)
+    is_read = models.BooleanField(default=False)
