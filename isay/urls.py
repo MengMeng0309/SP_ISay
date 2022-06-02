@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from .views import HomeTemplateView, Home2TemplateView, TeamTemplateView, ServicesTemplateView, NewsTemplateView, AppointmentTemplateView, ManageAppointmentTemplateView, LoginTemplateView, SignupTemplateView, profile, modify_profile, ResetPasswordView, CreateThread, ListThreads, ThreadView, CreateMessage
+from .views import HomeTemplateView, Home2TemplateView, TeamTemplateView, ServicesTemplateView, NewsTemplateView, AppointmentTemplateView, ManageAppointmentTemplateView, LoginTemplateView, SignupTemplateView, profile, modify_profile, ResetPasswordView, CreateThread, ListThreads, ThreadView, CreateMessage, SummaryTemplateView
 from isay import views
 
 urlpatterns = [
@@ -9,6 +9,7 @@ urlpatterns = [
      path("team/", TeamTemplateView.as_view(), name = "team"),
      path("services/", ServicesTemplateView.as_view(), name = "services"),
      path("news/", NewsTemplateView.as_view(), name = "news"),                ####HOMEPAGE
+     path("summarypage/", SummaryTemplateView.as_view(), name = "summary"),
      path("make-an-appointment/", AppointmentTemplateView.as_view(), name="appointment"),
      path("manage-appointments/", ManageAppointmentTemplateView.as_view(), name="manage"),
      path('signup/', SignupTemplateView.as_view(), name='signup'),

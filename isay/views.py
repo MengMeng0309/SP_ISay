@@ -98,6 +98,9 @@ class ServicesTemplateView(TemplateView):
 class NewsTemplateView(TemplateView):
     template_name = "news.html"
 
+class SummaryTemplateView(TemplateView):
+    template_name = "summary_page.html"
+
 class AppointmentTemplateView(TemplateView):
     template_name = "appointment.html"
     def post(self, request):
@@ -107,6 +110,7 @@ class AppointmentTemplateView(TemplateView):
         mobile = request.POST.get("mobile")
         gender = request.POST.get("gender")
         services = request.POST.get("services")
+        college = request.POST.get("college")
         message = request.POST.get("request")
         
 
@@ -117,6 +121,7 @@ class AppointmentTemplateView(TemplateView):
             phone=mobile,
             gender=gender,
             services=services,
+            college=college,
             request=message,
 
            

@@ -117,6 +117,18 @@
                                     <option value="Peer Facilitating Program">Peer Facilitating Program</option>
                                 </select>
                             </div>
+                            <div class="form-group col-sm-6 flex-column d-flex">
+                                <label class="form-control-label px-3" style = " padding-bottom: 5px;">Select College<span class="text-danger"> *</span></label> 
+                                <select class="form-control px-2"  name="college" id="col" onblur="validate(7)">
+                                    <option value="" disabled selected>College</option>
+                                    <option value="CAS">CAS</option>
+                                    <option value="CM">CM</option>
+                                    <option value="SOTECH">SOTECH</option>
+                                    <option value="CFOS">CFOS</option>
+                                    <option value="UPVHS">UPVHS</option>
+                                    <option value="UPVTC">UPVTC</option>
+                                </select>
+                            </div>
                         </div>
 
 
@@ -134,9 +146,9 @@
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="form-group col-sm-6"> 
+                            <div> 
                                 <button type="submit" class="btn-block" style="color: whitesmoke; background-color: rgb(117, 16, 17);">SEND</button>
-                                <a href="{% url 'home' %}" class="btn active" style="color: whitesmoke; background-color: rgb(117, 16, 17);" role="button" aria-pressed="true">Cancel</a> 
+                                <a href="{% url 'home' %}" class="btn active justify-content-center" style="margin: auto; color: whitesmoke; background-color: rgb(105,105,105);" role="button" aria-pressed="true">CANCEL</a> 
                             </div>
                         </div>
                          
@@ -156,6 +168,8 @@
     v5 = document.getElementById("gen");
     v6 = document.getElementById("ser");
     v7 = document.getElementById("ans");
+    v8 = document.getElementById("col");
+
 
     flag1 = true;
     flag2 = true;
@@ -164,6 +178,7 @@
     flag5 = true;
     flag6 = true;
     flag7 = true;
+    flag8= true;
 
     if(val>=1 || val==0) {
     if(v1.value == "") {
@@ -236,8 +251,18 @@
     flag7 = true;
     }
     }
+    if(val>=8 || val==0) {
+        if(v8.value == "") {
+        v8.style.borderColor = "red";
+        flag8 = false;
+        }
+        else {
+        v8.style.borderColor = "green";
+        flag8 = true;
+        }
+        }
 
-    flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7;
+    flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag8;
 
     return flag;
     }

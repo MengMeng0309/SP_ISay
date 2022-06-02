@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'isay',
     'captcha',
     'crispy_forms',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'isay.context_processors.get_summary',
             ],
         },
     },
@@ -145,3 +147,8 @@ LOGIN_URL = 'login'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

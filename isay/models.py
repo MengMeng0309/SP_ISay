@@ -14,6 +14,15 @@ class Appointment(models.Model):
         ('Peer Facilitating Program', 'Peer Facilitating Program'),
     )
 
+    COLLEGE = (
+        ('CAS', 'CAS'),
+        ('CM', 'CM'),
+        ('SOTECH', 'SOTECH'),
+        ('CFOS', 'CFOS'),
+        ('UPVHS', 'UPVHS'),
+        ('UPVTC', 'UPVTC'),
+    )
+
     GENDER = (
         ('Male', 'Male'),
         ('Female', 'Female'),
@@ -24,6 +33,7 @@ class Appointment(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     services = models.CharField(max_length=100,choices=SERVICES_CHOICES)
+    college = models.CharField(max_length=100,choices=COLLEGE)
     gender = models.CharField(max_length=100,choices=GENDER)
     phone = models.CharField(max_length=12)
     request = models.TextField(blank=True)

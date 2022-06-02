@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block style %}
 
   .card-margin {
@@ -16,6 +15,7 @@
       background-clip: border-box;
       border: 1px solid rgb(117, 16, 17);
       border-radius: 8px;
+      width: 29cm;
   }
 
   .card .card-header.no-border {
@@ -275,7 +275,7 @@
   }
 
   .widget-49 .widget-49-title-wrapper .widget-49-meeting-info .widget-49-meeting-time {
-    color: #B1BAC5;
+    color: #474747;
     font-size: 13px;
   }
 
@@ -330,85 +330,55 @@
       box-shadow: none
   }
 {% endblock style %}
-
 {% block content %}
 
     <div class="text-center mb-4" style="background-color: rgb(117, 16, 17);">
-      <div class="container text-white" style="background-color: rgb(117, 16, 17);">
+        <div class="container text-white" style="background-color: rgb(117, 16, 17);">
         <h2>
-          MANAGE APPOINTMENTS
+            SUMMARY REPORT
         </h2><br><br>
-      </div>
+        </div>
     </div>
-
     <div class="container mt-5">
         <div class="row">
-
-        {% for app in appointments %}
             <div class="col-lg-4">
                 <div class="card card-margin">
                     <div class="card-header no-border">
-                        <h4 class="card-title">{{app.first_name}} {{app.last_name}}</h4>
+                        <h4 class="card-title">Accepted Appointments (General): </h4>
                     </div>
                     <div class="card-body pt-0">
                         <div class="widget-49">
                             <div class="widget-49-title-wrapper">
                                 <div class="widget-49-date-primary">
-                                    <span class="widget-49-date-day">{{app.sent_date|date:"d"}}</span>
-                                    <span class="widget-49-date-month">{{app.sent_date|date:"M"}}</span>
+                                    <span class="widget-49-date-day">{{accepted_count}}</span>
                                 </div>
                                 <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">Gender: {{app.gender}}</span>
-                                    <span class="widget-49-pro-title">College: {{app.college}}</span>
-                                    <span class="widget-49-pro-title">Email: {{app.email}}</span>
-                                    <span class="widget-49-meeting-time">Contact Number: {{app.phone}}</span>
-                                    <span class="widget-49-pro-title"><b>{{app.services}}</b></span>
+                                    <span class="widget-49-pro-title"><b>Gender:</b> </span>
+                                    <span class="widget-49-meeting-time">Male = {{male_count}}</span>
+                                    <span class="widget-49-meeting-time">Female = {{female_count}}</span>
+                                    <span class="widget-49-pro-title"><b>Services:</b></span>
+                                    <span class="widget-49-meeting-time">Counseling = {{counsel_count}}</span>
+                                    <span class="widget-49-meeting-time">Psychological Testing = {{psy_count}}</span>
+                                    <span class="widget-49-meeting-time">Career Guidance, Graduate Placement and Follow-up = {{car_count}}</span>
+                                    <span class="widget-49-meeting-time">Human Development Services = {{human_count}}</span>
+                                    <span class="widget-49-meeting-time">Peer Facilitating Program = {{peer_count}}</span>
+                                    <span class="widget-49-pro-title"><b>College:</b></span>
+                                    <span class="widget-49-meeting-time">CAS = {{CAS_count}}</span>
+                                    <span class="widget-49-meeting-time">CM = {{CM_count}}</span>
+                                    <span class="widget-49-meeting-time">SOTECH = {{SOTECH_count}}</span>
+                                    <span class="widget-49-meeting-time">CFOS = {{CFOS_count}}</span>
+                                    <span class="widget-49-meeting-time">UPVHS = {{UPVHS_count}}</span>
+                                    <span class="widget-49-meeting-time">UPVTC = {{UPVTC_count}}</span>
+
+
                                 </div>
                             </div>
-                            <div class="widget-49-meeting-points">
-                                <span><b>Side Notes:</b><br>{{app.request}}</span>
-                            </div>
-                            <hr class="w-100">
-                            {% if app.accepted == False %}
-                            <form method="POST" action="{% url 'manage' %}">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <input type="date" name="date" class="form-control mb-2" 
-                                    placeholder="dd-mm-yyyy" value=""
-                                    min="1997-01-01" max="2030-12-31">
-                                    <input hidden="true" name="appointment-id" value="{{app.id}}">
-                                <input class="btn-block form-control" type="submit" value="Accept" style="color: whitesmoke; background-color: rgb(117, 16, 17);">
-                            </div>
-                            </form>
-                            {% else %}
-                              <span class="widget-49-meeting-time">Accepted by : {{app.who_accepted_f}} {{app.who_accepted_l}}</span>
-                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
-        {% endfor %}
-
         </div>
-
-        {% if is_paginated %}
-        <div class="wrapper">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    {% if page_obj.has_previous %}
-                    <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a></li>
-                    {% endif %}
-                    {% for number in page_obj.paginator.page_range %}
-                    <li class="page-item"><a class="page-link" href="?page={{number}}">{{number}}</a></li>
-                    {% endfor %}
-                    {% if page_obj.has_next %}
-                    <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </div>
-
-        {% endif %}
     </div>
+    
 
 {% endblock content %}
